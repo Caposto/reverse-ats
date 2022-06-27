@@ -3,16 +3,20 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 # lxml parsers
-#$ apt-get install python-lxml
-#$ easy_install lxml
 #$ pip install lxml
 
 #HTML 5 web parser - the way browsers do it
-#$ apt-get install python-html5lib
-#$ easy_install html5lib
 #$ pip install html5lib
 
-# Create a BeautifulSoup object
-soup = BeautifulSoup('<b class="boldest">Extremely bold</b>', 'lxml')
-tag = soup.b
-print(type(tag))
+#6/26 Goal: Get Job Title from a job posting on LinkedIn
+# hhttps://www.linkedin.com/jobs/view/3114502964/?alternateChannel=search&refId=zFDuw0gRwxQIow6TJ5rl%2Bw%3D%3D&trackingId=MQvaNALJ6NJH6kOv0d0FGw%3D%3D
+# Adobe "2022 Digital Academy Intern - Software Engineer"
+
+adobe_url = "https://www.linkedin.com/jobs/view/3114502964/?alternateChannel=search&refId=zFDuw0gRwxQIow6TJ5rl%2Bw%3D%3D&trackingId=MQvaNALJ6NJH6kOv0d0FGw%3D%3D"
+
+data = requests.get(adobe_url)
+
+# Write results to an html file to make it easier to read
+with open("data.html", "w", encoding="utf-8") as f:
+    f.write(data.text)
+
