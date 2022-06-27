@@ -20,3 +20,5 @@ data = requests.get(adobe_url)
 with open("data.html", "w", encoding="utf-8") as f:
     f.write(data.text)
 
+soup = BeautifulSoup(data.text, 'lxml')
+print("Job Title: " + soup.title.string)
