@@ -26,6 +26,10 @@ def getJobDescription(post_url):
     soup = BeautifulSoup(data.text, 'lxml')
     tags = soup.find_all("script")
     # print("Job Title: " + soup.title.string)
-    print(tags[1].text)
 
-getJobDescription(adobe_url)
+    return tags[1].text
+
+with open("description.txt", "w") as f:
+    f.write(getJobDescription(adobe_url))
+
+print(getJobDescription(adobe_url))
