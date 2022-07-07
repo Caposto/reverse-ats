@@ -38,8 +38,10 @@ def getJobDescription(job_url):
 
 
 def copyDescription(job_url):
+    words = getJobDescription(job_url).split(' ')
     with open("description.txt", "w") as f:
-        f.writelines(getJobDescription(job_url))
+        for word in words:
+            f.write(word + "\n")
 
 # def formatStringToMultipleLines():
 
