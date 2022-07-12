@@ -1,6 +1,6 @@
+from turtle import title
 import requests 
 import json
-import pandas as pd
 from bs4 import BeautifulSoup
 
 # lxml parsers
@@ -14,6 +14,9 @@ from bs4 import BeautifulSoup
 # Adobe "2022 Digital Academy Intern - Software Engineer"
 
 adobe_url = "https://www.linkedin.com/jobs/view/3114502964/?alternateChannel=search&refId=zFDuw0gRwxQIow6TJ5rl%2Bw%3D%3D&trackingId=MQvaNALJ6NJH6kOv0d0FGw%3D%3D"
+
+# Create an object for scraped data?
+
 
 def getJobDescription(job_url):
     # Request the html
@@ -31,6 +34,31 @@ def getJobDescription(job_url):
     # print("Job Title: " + soup.title.string)
     return str(description)
 
+# Scrape and return the job title 
+def getJobTitle(job_url):
+    data = requests.get(job_url)
+    soup = BeautifulSoup(data.text, 'lxml')
+
+    # In this case there is only one tag with this class, but will it always be? What if LinkedIn changes its styling?
+    title_tag = soup.find('h3', class_='sub-nav-cta__header')
+    job_title = title_tag.text
+
+    print(job_title)
+
+# FIXME: Implement this function
+def getCompany(job_url):
+    data = requests.get(job_url)
+    soup = BeautifulSoup(data.text, 'lxml')
+
+# FIXME: Implement this function
+def getDate(job_url):
+    data = requests.get(job_url)
+    soup = BeautifulSoup(data.text, 'lxml')
+
+# FIXME: Implement this function
+def getLocation(job_url):
+    data = requests.get(job_url)
+    soup = BeautifulSoup(data.text, 'lxml')
 
 def copyDescription(job_url):
     words = getJobDescription(job_url).split(' ')
@@ -38,8 +66,8 @@ def copyDescription(job_url):
         for word in words:
             f.write(word + "\n")
 
+# Run the following code to write job_description to a file
 # def formatStringToMultipleLines():
-
 
 # print(getJobDescription(adobe_url))
 
