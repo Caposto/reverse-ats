@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 
 adobe_url = "https://www.linkedin.com/jobs/view/3114502964/?alternateChannel=search&refId=zFDuw0gRwxQIow6TJ5rl%2Bw%3D%3D&trackingId=MQvaNALJ6NJH6kOv0d0FGw%3D%3D"
 
-# Create an object for scraped data?
+# Create an object class for scraped data? toString, only need to pass in URL once, only need to use one SOUP object 
 
 
 def getJobDescription(job_url):
@@ -45,10 +45,15 @@ def getJobTitle(job_url):
 
     print(job_title)
 
-# FIXME: Implement this function
+# Scrape and return the Company hiring
 def getCompany(job_url):
     data = requests.get(job_url)
     soup = BeautifulSoup(data.text, 'lxml')
+
+    company_tag = soup.find('a', class_='topcard__org-name-link topcard__flavor--black-link')
+    company_name = company_tag.text
+
+    print(company_name)
 
 # FIXME: Implement this function
 def getDate(job_url):
@@ -65,6 +70,8 @@ def copyDescription(job_url):
     with open("description.txt", "w") as f:
         for word in words:
             f.write(word + "\n")
+
+getCompany(adobe_url)
 
 # Run the following code to write job_description to a file
 # def formatStringToMultipleLines():
