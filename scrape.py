@@ -43,9 +43,10 @@ def getJobTitle(job_url):
     title_tag = soup.find('h3', class_='sub-nav-cta__header')
     job_title = title_tag.text
 
-    print(job_title)
+    print("Job Title: " + job_title)
 
 # Scrape and return the Company hiring
+# FIXME: Formatting for location is a bit off, it has a bunch of space before and after the word
 def getCompany(job_url):
     data = requests.get(job_url)
     soup = BeautifulSoup(data.text, 'lxml')
@@ -53,17 +54,19 @@ def getCompany(job_url):
     company_tag = soup.find('a', class_='topcard__org-name-link topcard__flavor--black-link')
     company_name = company_tag.text
 
-    print(company_name)
+    print("Company Name: " + company_name)
 
-# FIXME: Implement this function
-def getDate(job_url):
-    data = requests.get(job_url)
-    soup = BeautifulSoup(data.text, 'lxml')
-
-# FIXME: Implement this function
+# Scrape and return the Location
+# FIXME: Formatting for location is a bit off, it has a bunch of space before and after the word
 def getLocation(job_url):
     data = requests.get(job_url)
     soup = BeautifulSoup(data.text, 'lxml')
+
+    location_tag = soup.find('span', class_="topcard__flavor topcard__flavor--bullet")
+    location = location_tag.text
+
+    print("Location: " + location)
+    
 
 def copyDescription(job_url):
     words = getJobDescription(job_url).split(' ')
@@ -71,7 +74,7 @@ def copyDescription(job_url):
         for word in words:
             f.write(word + "\n")
 
-getCompany(adobe_url)
+getLocation(adobe_url)
 
 # Run the following code to write job_description to a file
 # def formatStringToMultipleLines():
