@@ -3,20 +3,38 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
-# lxml parsers
-#$ pip install lxml
-
-#HTML 5 web parser - the way browsers do it
-#$ pip install html5lib
-
 #6/26 Goal: Get Job Title from a job posting on LinkedIn
 # hhttps://www.linkedin.com/jobs/view/3114502964/?alternateChannel=search&refId=zFDuw0gRwxQIow6TJ5rl%2Bw%3D%3D&trackingId=MQvaNALJ6NJH6kOv0d0FGw%3D%3D
 # Adobe "2022 Digital Academy Intern - Software Engineer"
 
-adobe_url = "https://www.linkedin.com/jobs/view/3114502964/?alternateChannel=search&refId=zFDuw0gRwxQIow6TJ5rl%2Bw%3D%3D&trackingId=MQvaNALJ6NJH6kOv0d0FGw%3D%3D"
+adobe_url = "https://www.linkedin.com/jobs/collections/recommended/?currentJobId=3109522306"
+siemens_url = "https://www.linkedin.com/jobs/view/3162081945/?alternateChannel=search&refId=mSagxZuQsPK28ZP3PZeK2g%3D%3D&trackingId=tVom1NboIDpmHDHSJXmNdg%3D%3D"
 
 # Create an object class for scraped data? toString, only need to pass in URL once, only need to use one SOUP object 
 
+class Post:
+
+    # Initialize the job URL and create the Soup object to pass to methods
+    def __init__(self, job_url):
+        self.req = requests.request("GET", job_url, timeout=1)
+
+        # Create soup object if the status code went through, else Print Error
+        if self.req.status_code == 200:
+            self.soup = BeautifulSoup(self.req.text, 'lxml')
+            print("Success!")
+        else:
+            print("Error with request: " + str(self.data.status_code))
+    
+    def getJobDescription(self):
+        description_tag = self.soup.find('div', id_='job-details')
+        print(description_tag)
+        # py_json_obj = str(description_tags[1].text)
+        # json_obj = json.load(py_json_obj)
+        # description = json_obj["description"]
+        # return str(description)
+
+adobe_post = Post(siemens_url)
+adobe_post.getJobDescription()
 
 def getJobDescription(job_url):
     # Request the html
@@ -73,8 +91,6 @@ def copyDescription(job_url):
     with open("description.txt", "w") as f:
         for word in words:
             f.write(word + "\n")
-
-getLocation(adobe_url)
 
 # Run the following code to write job_description to a file
 # def formatStringToMultipleLines():
