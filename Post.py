@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import json
 
 class Post:
 
@@ -17,3 +18,16 @@ class Post:
     def getJobDescription(self):
         tag = self.soup.find(id="job-details")
         print(tag)
+
+
+# Run the following code to write job_description to a file
+# def formatStringToMultipleLines():
+
+# print(getJobDescription(adobe_url))
+
+# Run this to update description.txt with the current request's data
+# copyDescription(adobe_url)
+
+# Write results to an html file to make it easier to read
+#with open("data.html", "w", encoding="utf-8") as f:
+#    f.write(data.text)
