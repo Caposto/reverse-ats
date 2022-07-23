@@ -1,3 +1,4 @@
+from asyncore import write
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -28,15 +29,22 @@ wd.get(harris_url)
 
 more_button = wd.find_element(By.CLASS_NAME, "show-more-less-html__button")
 wd.execute_script("arguments[0].click();", more_button)
-
 div = wd.find_element(By.CLASS_NAME, "show-more-less-html__markup")
-print(div.text)
-# button.location_once_scrolled_into_view
-# wd.execute_script("arguments[0].scrollIntoView();", button)
-# button.click()
-# tag = wd.find_element(By.TAG_NAME, "h1")
 
-time.sleep(100)
+# Function for writing job description to a text file
+# Commas and other characters are filtered out & each character is written on its own line
+# filename (string): name of destination text file
+# text (string): description string (usually in the form of a webdriver WebElement.text)
+def write_to_file(filename, text):
+    new_text = text.replace(',', '').replace(':', '')
+    words = new_text.split()
+    with open(filename, 'w') as f:
+        for word in words:
+            f.write(word + '\n')
+
+write_to_file('description.txt', div.text)
+
+time.sleep(3)
 wd.quit()
 
 
