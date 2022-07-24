@@ -16,6 +16,11 @@ class Post:
         self.wd = wd
         self.job_url = job_url
         self.wd.get(self.job_url)
+
+    def __str__(self) -> str:
+        return("POSITION: " + self.get_job_title() + "\n" +
+               "EMPLOYER: " + self.get_employer() + "\n" +
+               "DESCRIPTION: " + self.get_job_description()) 
     
     def get_job_description(self):
         try:

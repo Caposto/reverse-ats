@@ -11,15 +11,16 @@ ey_url = "https://www.linkedin.com/jobs/view/3178858633/?alternateChannel=search
 # FIXME: How do I know if the session has gotten all of the information it needs?
 # FIXME: What are some alternatives to manual time.sleep() times
 harris_job = Post(harris_url)
-print(harris_job.get_job_description() + '\n')
-print(harris_job.get_job_title() + '\n')
-print(harris_job.get_employer() + '\n')
+print(harris_job)
+# print(harris_job.get_job_description() + '\n')
+# print(harris_job.get_job_title() + '\n')
+# print(harris_job.get_employer() + '\n')
 # harris_job.end_session()
 
 ey_job = Post(ey_url)
-print(ey_job.get_job_description() + '\n')
-print(ey_job.get_job_title() + '\n')
-print(ey_job.get_employer() + '\n')
+# print(ey_job.get_job_description() + '\n')
+# print(ey_job.get_job_title() + '\n')
+# print(ey_job.get_employer() + '\n')
 # ey_job.end_session()
 
 
