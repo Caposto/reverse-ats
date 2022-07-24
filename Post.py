@@ -1,6 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
@@ -23,27 +21,22 @@ class Post:
         try:
             self.expose_description()
             description_tag = self.wd.find_element(By.CLASS_NAME, "show-more-less-html__markup")
-            time.sleep(3)
             return description_tag.text
         except Exception as e:
             return "Error finding the job description: " + e
 
     def get_job_title(self):
-        title_tag = self.wd.find_element(By.CLASS_NAME, "top-card-layout__title font-sans text-lg papabear:text-xl font-bold leading-open text-color-text mb-0 topcard__title")
-        time.sleep(3)
+        title_tag = self.wd.find_element(By.CLASS_NAME, "top-card-layout__title")
         return title_tag.text
 
     def get_employer(self):
-        employer_tag = self.wd.find_element(By.CLASS_NAME, "topcard__org-name-link topcard__flavor--black-link")
-        time.sleep(3)
+        employer_tag = self.wd.find_element(By.CLASS_NAME, "topcard__org-name-link")
         return employer_tag.text
 
     def write_to_file(self, filename, text):
         return
-
-    def end_session(self):
-        self.wd.quit()
     
+    # Helper function that automates browser to expand the section of the web page that contains the job description
     def expose_description(self):
         try: 
             more_button = self.wd.find_element(By.CLASS_NAME, "show-more-less-html__button")
@@ -51,7 +44,8 @@ class Post:
         except Exception as e:
             return "Error finding button: " + e
 
-
+    def end_session(self):
+        self.wd.quit()
 
 
 # Function for writing job description to a text file
