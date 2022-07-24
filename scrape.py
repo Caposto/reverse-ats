@@ -22,8 +22,13 @@ harris_url = "https://www.linkedin.com/jobs/view/3177003033/?alternateChannel=se
 # Scroll to bottom of page - hopefully this exposes all HTML
 # wd.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
+# FIXME: How do I know if the session has gotten all of the information it needs?
+# FIXME: What are some alternatives to manual time.sleep() times
 harris_job = Post(harris_url)
-print(harris_job.get_job_description)
+print(harris_job.get_job_description())
+# print(harris_job.get_job_title())
+# print(harris_job.get_employer())
+harris_job.end_session()
 # print(harris_job.get_employer())
 
 
