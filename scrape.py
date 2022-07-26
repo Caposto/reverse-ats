@@ -11,9 +11,6 @@ ey_url = "https://www.linkedin.com/jobs/view/3148171398/?alternateChannel=search
 # print(harris_job)
 # harris_job.end_session()
 
-for job in job_postings:
-    url = job_postings[job]["url"]
-    j = Job_Post(url)
 
 # ey_job = Job_Post(ey_url)
 # print(ey_job)
