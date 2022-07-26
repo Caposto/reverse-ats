@@ -1,5 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 # A class for wrapping Selenium web scraping functionality into simple methods
@@ -9,18 +7,12 @@ class Job_Post:
     # FIXME: Test against Global WebDriver
     def __init__(self, job_url, webdriver) -> None:
         """Creates Chromedriver object and runs it on the given job URL"""
-        try:
-            #options = Options()
-            #options.add_argument("start-maximized")
-            #options.add_experimental_option("detach", True) # Prevent browser from closing immediately
-            #wd = webdriver.Chrome(options=options)
-
-            self.wd = webdriver
-            self.job_url = job_url
-            self.wd.get(self.job_url)
+        self.wd = webdriver
+        self.job_url = job_url
+        self.wd.get(self.job_url)
         # FIXME: Research if there are better ways/best practices for handling error and exceptions
-        except Exception as e:
-            return "Error creating the web driver " + str(e)
+        #except Exception as e:
+        #    return "Error creating the web driver " + str(e)
 
     def __str__(self) -> str:
         info = self.scrape_info_list()
