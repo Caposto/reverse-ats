@@ -1,7 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from Post import Post
 
 # Test URLs
@@ -12,15 +8,10 @@ ey_url = "https://www.linkedin.com/jobs/view/3178858633/?alternateChannel=search
 # FIXME: What are some alternatives to manual time.sleep() times
 harris_job = Post(harris_url)
 print(harris_job)
-# print(harris_job.get_job_description() + '\n')
-# print(harris_job.get_job_title() + '\n')
-# print(harris_job.get_employer() + '\n')
 # harris_job.end_session()
 
-ey_job = Post(ey_url)
-# print(ey_job.get_job_description() + '\n')
-# print(ey_job.get_job_title() + '\n')
-# print(ey_job.get_employer() + '\n')
+# ey_job = Post(ey_url)
+# print(ey_job)
 # ey_job.end_session()
 
 
