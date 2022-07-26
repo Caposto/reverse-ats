@@ -1,0 +1,10 @@
+job_postings = {"EY" : "https://www.linkedin.com/jobs/view/3178858633/?alternateChannel=search&refId=HSrPEUNyGlfqaMRMwcELlw%3D%3D&trackingId=YmvlBHj9gQxpxxAQNm4AxQ%3D%3D",
+                "L3HARRIS": "https://www.linkedin.com/jobs/view/3177003033/?alternateChannel=search&refId=NZT9zV8uEoIg8agLGIavuA%3D%3D&trackingId=l23qk%2BcE7A9qdnEcH6JbWw%3D%3D",
+                "ORACLE" : "https://www.linkedin.com/jobs/view/3166762501/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=iQgznQen2SOPg13h9sGWpg%3D%3D",
+                "UPS" : "https://www.linkedin.com/jobs/view/3142317856/?alternateChannel=search&refId=TBHNeAwchPt93A5mdh%2Fhbw%3D%3D&trackingId=WscC%2B9zHZVeJSYhKL5TJtQ%3D%3D",
+                "MLB" : "https://www.linkedin.com/jobs/view/3168999925/?alternateChannel=search&refId=rkXzVTwk2O8UwzkD2GLPnw%3D%3D&trackingId=coBWRHP1HQktiNpwjAL9NA%3D%3D",
+                "J&J" : "https://www.linkedin.com/jobs/view/3160264238/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=G4ZFqx7VWdeICTAJ8GrFsA%3D%3D",
+                "INTEL" : "https://www.linkedin.com/jobs/view/2921118320/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=oNG0cgNLbq3E1y04kjV2VQ%3D%3D",
+                "DELOITTE" : "https://www.linkedin.com/jobs/view/3129909445/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=H3mqFOVD4wvg%2BnDoaNMtmw%3D%3D",
+                "FBI" : "https://www.linkedin.com/jobs/view/3178490771/?alternateChannel=search&refId=XVe6atisLD8vSrxTvRFLog%3D%3D&trackingId=kGXVHHmPl5%2Bcs6fKl%2B4wMQ%3D%3D",
+                "AMAZON" : "https://www.linkedin.com/jobs/view/3164892698/?alternateChannel=search&refId=XVe6atisLD8vSrxTvRFLog%3D%3D&trackingId=hZoGY4a3k8SapzbHEJtmsQ%3D%3D",}
