@@ -25,7 +25,6 @@ class Job_Post:
                "INDUSTRIES: " + info['Industries'])
     
     # UTILITY METHODS
-
     def get_url(self) -> str:
         return self.job_url
 
@@ -45,7 +44,6 @@ class Job_Post:
         return
     
     # SCRAPING METHODS
-
     # FIXME: Implement
     def get_job_id(self):
         return 
