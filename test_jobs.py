@@ -9,7 +9,7 @@ job_postings = {"EY" : {
                             "industry" : "Accounting"
                         }
                     },
-                "L3HARRIS": {
+                "L3HARRIS" : {
                         "url" : "https://www.linkedin.com/jobs/view/3177003033/?alternateChannel=search&refId=NZT9zV8uEoIg8agLGIavuA%3D%3D&trackingId=l23qk%2BcE7A9qdnEcH6JbWw%3D%3D",
                         "title" : "Software Engineering Intern (Camden, NJ)",
                         "employer" : "L3Harris Technologies",
@@ -20,7 +20,7 @@ job_postings = {"EY" : {
                             "industry" : "Defense and Space Manufacturing"
                         }
                     },
-                "ORACLE" :                 {
+                "ORACLE" : {
                         "url" : "https://www.linkedin.com/jobs/view/3166762501/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=iQgznQen2SOPg13h9sGWpg%3D%3D",
                         "title" : "Software Engineer Intern - Applications Development",
                         "employer" : "Oracle",

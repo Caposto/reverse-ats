@@ -14,7 +14,7 @@ ey_url = "https://www.linkedin.com/jobs/view/3148171398/?alternateChannel=search
 
 # FIXME: How do I know if the session has gotten all of the information it needs?
 harris_job = Job_Post(harris_url, wd)
-print(harris_job.scrape_raw_description())
+print(harris_job.scrape_job_id())
 # print(harris_job)
 # harris_job.end_session()
 

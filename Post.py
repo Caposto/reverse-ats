@@ -9,15 +9,18 @@ from selenium.common.exceptions import TimeoutException
 # Scrapes data from the LinkedIn Job Board
 class Job_Post:
 
-    # FIXME: Test against Global WebDriver
     def __init__(self, job_url, webdriver) -> None:
-        """Creates Chromedriver object and runs it on the given job URL"""
+        """
+        Initalize and retrieve Job Posting with Selenium ChromeDriver
+        Params: job_url - url of job posting, webdriver - globally declared Chromedriver
+        """
         self.wd = webdriver
         self.job_url = job_url
-        self.wd.get(self.job_url)
-        # FIXME: Research if there are better ways/best practices for handling error and exceptions
-        #except Exception as e:
-        #    return "Error creating the web driver " + str(e)
+        try:
+            self.wd.get(self.job_url)
+        except Exception as e:
+            print("Exception raised when launching browser: " + str(e))
+            self.wd.close()
 
     def __str__(self) -> str:
         info = self.scrape_info_list()
@@ -41,13 +44,14 @@ class Job_Post:
         return
     
     # SCRAPING METHODS
-    # FIXME: Implement
-    def get_job_id(self):
-        return 
+    def scrape_job_id(self):
+        code_tag = self.find_element(By.ID, "decoratedJobPostingId")
+        return code_tag.text
 
     def scrape_raw_description(self, time=5) -> str:
         """
         Searches for button that expands/exposes the full job description and presses if detected
+        Params: time = seconds before wait ex
         Throws TimeoutException if the element is not found in the specified time
         """
         more_button = WebDriverWait(self.wd, time).until(EC.presence_of_element_located(
@@ -59,6 +63,7 @@ class Job_Post:
         else:
             self.wd.close()
             return "Error Finding More Button"
+        # FIXME: Does the above logic work or does the TimeoutException need to be addressed?
         #except TimeoutException as ex:
         #    print("Exception Thrown: " + str(ex))
         #    self.wd.close()
