@@ -1,4 +1,9 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Exceptions
+from selenium.common.exceptions import TimeoutException
 
 # A class for wrapping Selenium web scraping functionality into simple methods
 # Scrapes data from the LinkedIn Job Board
@@ -31,14 +36,6 @@ class Job_Post:
     def end_session(self) -> None:
         self.wd.quit()
 
-    def expose_description(self) -> None:
-        """Helper function that uses Selenium to press button that reveals entire job description"""
-        try: 
-            more_button = self.wd.find_element(By.CLASS_NAME, "show-more-less-html__button")
-            self.wd.execute_script("arguments[0].click();", more_button)
-        except Exception as e:
-            return "Error finding button: " + e
-
     # FIXME: Implement
     def write_to_file(self, filename, text):
         return
@@ -48,15 +45,23 @@ class Job_Post:
     def get_job_id(self):
         return 
 
-    def scrape_raw_description(self) -> str:
-        """Calls expose_desciption() to access the proper HTML elements and then returns all of the text contained within the job description"""
-        # FIXME: Try & Except or "if tag:"
-        try:
-            self.expose_description()
-            description_tag = self.wd.find_element(By.CLASS_NAME, "show-more-less-html__markup")
+    def scrape_raw_description(self, time=5) -> str:
+        """
+        Searches for button that expands/exposes the full job description and presses if detected
+        Throws TimeoutException if the element is not found in the specified time
+        """
+        more_button = WebDriverWait(self.wd, time).until(EC.presence_of_element_located(
+                                                      (By.CLASS_NAME, "show-more-less-html__button")))
+        if (more_button):
+            self.wd.execute_script("arguments[0].click();", more_button)
+            description_tag = self.wd.find_element(By.CLASS_NAME, "show-more-less-html__markup") 
             return description_tag.text
-        except Exception as e:
-            return "Error scraping the job description: " + e
+        else:
+            self.wd.close()
+            return "Error Finding More Button"
+        #except TimeoutException as ex:
+        #    print("Exception Thrown: " + str(ex))
+        #    self.wd.close()
 
     def scrape_job_title(self) -> str:
         try:
