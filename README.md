@@ -2,7 +2,7 @@
 
 The goal of this project is to practice web-scraping with Python through a project that aims to streamline the job application process. The inspiration for this project comes from the Applicant Tracking System (ATS), a type of software used by many companies to organize and filter out prospective job candidates. I use Selenium to scrape the descriptions from LinkedIn's Job Board and then plan on using NLP to identiy keywords.
 
-I plane on packaging the code into a chrome extension. To implement the python web scraping and NLP code, I will make a Flask or Django API to connect to the Chrome Extension code. The chrome extension will allow users to automatically deconstruct and compare their resume to different jobs on LinkedIn without having to copy and paste the description somewhere else.
+I plan on packaging the code into a chrome extension. To implement the python web scraping and NLP code, I will make a Flask or Django API to connect to the Chrome Extension code. The chrome extension will allow users to automatically deconstruct and compare their resume to different jobs on LinkedIn without having to copy and paste the description somewhere else.
 
 # Installation/Setup
 ```
