@@ -33,20 +33,36 @@ class Job_Post:
                "INDUSTRIES: " + info['Industries'])
     
     # UTILITY METHODS
-    def get_url(self) -> str:
-        return self.job_url
+    # FIXME: Implement public, private, and protected keywords as necessary
+    def end_session(self):
+        self.close()
 
-    def end_session(self) -> None:
-        self.wd.quit()
-
-    # FIXME: Implement
-    def write_to_file(self, filename, text):
-        return
+    def write_to_file(self, filename):
+        """
+        Function for writing job description to a text file
+        Commas and other characters are filtered out & each character is written on its own line
+        filename (string): name of destination .txt file
+        """
+        text = self.scrape_raw_description()
+        new_text = text.replace(',', '').replace(':', '')
+        words = new_text.split()
+        with open(filename, 'w') as f:
+            for word in words:
+                f.write(word + '\n')
     
     # SCRAPING METHODS
     def scrape_job_id(self):
-        code_tag = self.find_element(By.ID, "decoratedJobPostingId")
-        return code_tag.text
+        """
+        Returns the LinkedIn Job ID by Splitting the URL with '/' giving an array example:
+        ['https:', '', 'www.linkedin.com', 'jobs', 'view', '3177003033', 
+        '?alternateChannel=search&refId=NZT9zV8uEoIg8agLGIavuA%3D%3D&trackingId=l23qk%2BcE7A9qdnEcH6JbWw%3D%3D']
+        The ID is the 6th element
+        """
+        url_array = self.job_url.split("/")
+        if url_array[2] == 'www.linkedin.com':
+            id = self.job_url.split("/")[5]
+            return id
+        return "This site is not compatible with the webscraper"
 
     def scrape_raw_description(self, time=5) -> str:
         """
@@ -103,15 +119,3 @@ class Job_Post:
                 info[c] = t
 
         return info
-
-
-# Function for writing job description to a text file
-# Commas and other characters are filtered out & each character is written on its own line
-# filename (string): name of destination text file
-# text (string): description string (usually in the form of a webdriver WebElement.text)
-def write_to_file(filename, text):
-    new_text = text.replace(',', '').replace(':', '')
-    words = new_text.split()
-    with open(filename, 'w') as f:
-        for word in words:
-            f.write(word + '\n')
