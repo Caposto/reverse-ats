@@ -8,6 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 # A class for wrapping Selenium web scraping functionality into simple methods
 # Scrapes data from the LinkedIn Job Board
+# URL Format: https://www.linkedin.com/jobs/view{{JOB_ID}}/?alternateChannel=search&refId={{HASH}}&trackingId={{HASH}}
 class Job_Post:
 
     def __init__(self, job_url, webdriver) -> None:
