@@ -1,9 +1,9 @@
+import pytest
 import unittest
-import page
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from Post import Job_Post
-from test_jobs import job_postings
+from sample_jobs import job_postings
 
 # FIXME: Introduce explicit waits that wait until webpage is tested before moving on to the next
 class TestScraper(unittest.TestCase):

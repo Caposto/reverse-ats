@@ -88,7 +88,7 @@ class Job_Post:
 
     def scrape_job_title(self) -> str:
         try:
-            title_tag = self._wd.find_element(By.CLASS_NAME, "top-card-layout__titles")
+            title_tag = self._wd.find_element(By.CLASS_NAME, "top-card-layout__title")
             return title_tag.text
         except NoSuchElementException as e:
             return "Job Title Not Found, NoSuchElementException raised: " + str(e)
