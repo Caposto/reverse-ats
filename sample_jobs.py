@@ -2,6 +2,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3148171398/?alternateChannel=search&refId=rL4qxZB4xgCbtk2ac4s8Hg%3D%3D&trackingId=p39dPQzT8UqeUBlTgFiTbQ%3D%3D",
                         "title" : "Blockchain Analyzer Developer - Supervising Associate 1",
                         "employer" : "EY",
+                        "id": "3148171398",
                         "details" : {
                             "seniority" : "Entry level",
                             "employment" : "Full-time",
@@ -13,6 +14,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3177003033/?alternateChannel=search&refId=NZT9zV8uEoIg8agLGIavuA%3D%3D&trackingId=l23qk%2BcE7A9qdnEcH6JbWw%3D%3D",
                         "title" : "Software Engineering Intern (Camden, NJ)",
                         "employer" : "L3Harris Technologies",
+                        "id": "3177003033",
                         "details" : {
                             "seniority" : "Internship",
                             "employment" : "Full-time",
@@ -24,6 +26,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3166762501/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=iQgznQen2SOPg13h9sGWpg%3D%3D",
                         "title" : "Software Engineer Intern - Applications Development",
                         "employer" : "Oracle",
+                        "id": "3166762501",
                         "details" : {
                             "seniority" : "Internship",
                             "employment" : "Internship",
@@ -35,6 +38,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3142317856/?alternateChannel=search&refId=TBHNeAwchPt93A5mdh%2Fhbw%3D%3D&trackingId=WscC%2B9zHZVeJSYhKL5TJtQ%3D%3D",
                         "title" : "CoOp (Engineering Major - Junior)",
                         "employer" : "UPS",
+                        "id": "3142317856",
                         "details" : {
                             "seniority" : "Director",
                             "employment" : "Internship",
@@ -46,6 +50,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3168999925/?alternateChannel=search&refId=rkXzVTwk2O8UwzkD2GLPnw%3D%3D&trackingId=coBWRHP1HQktiNpwjAL9NA%3D%3D",
                         "title" : "Software Engineer",
                         "employer" : "Major League Baseball",
+                        "id" : "3168999925",
                         "details" : {
                             "seniority" : "Entry level",
                             "employment" : "Full-time",
@@ -57,6 +62,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3160264238/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=G4ZFqx7VWdeICTAJ8GrFsA%3D%3D",
                         "title" : "Drexel Technology Co-Op Fall 2022.",
                         "employer" : "Johnson & Johnson",
+                        "id" : "3160264238",
                         "details" : {
                             "seniority" : "Not Applicable",
                             "employment" : "Full-time",
@@ -68,6 +74,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/2921118320/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=oNG0cgNLbq3E1y04kjV2VQ%3D%3D",
                         "title" : "DSP Technology Specialist FAE",
                         "employer" : "Intel Corporation",
+                        "id" : "2921118320",
                         "details" : {
                             "seniority" : "Mid-Senior level",
                             "employment" : "Full-time",
@@ -79,6 +86,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3129909445/?alternateChannel=search&refId=2XYnSfLmEITe0IVbgN0tRw%3D%3D&trackingId=H3mqFOVD4wvg%2BnDoaNMtmw%3D%3D",
                         "title" : "Tax Technology Automation Specialist Master",
                         "employer" : "Deloitte",
+                        "id" : "3129909445",
                         "details" : {
                             "seniority" : "Not Applicable",
                             "employment" : "Full-time",
@@ -90,6 +98,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3178490771/?alternateChannel=search&refId=XVe6atisLD8vSrxTvRFLog%3D%3D&trackingId=kGXVHHmPl5%2Bcs6fKl%2B4wMQ%3D%3D",
                         "title" : "Special Agent: Cybersecurity/Technology Background",
                         "employer" : "Federal Bureau of Investigation (FBI)",
+                        "id" : "3178490771",
                         "details" : {
                             "seniority" : "Associate",
                             "employment" : "Full-time",
@@ -101,6 +110,7 @@ job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3164892698/?alternateChannel=search&refId=XVe6atisLD8vSrxTvRFLog%3D%3D&trackingId=hZoGY4a3k8SapzbHEJtmsQ%3D%3D",
                         "title" : "Agency Industry Specialist, AWS Advertising and Marketing Technology",
                         "employer" : "Amazon Web Services (AWS)",
+                        "id" : "3164892698",
                         "details" : {
                             "seniority" : "Not Applicable",
                             "employment" : "Full-time",
