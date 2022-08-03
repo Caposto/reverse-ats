@@ -103,10 +103,10 @@ class Job_Post:
     def scrape_info_list(self) -> dict:
         """
         Scrapes additional details about the job description and retrns the information in a dictionary
-        Seniority Level (Junior, Senior....)
-        Employment Type (Full-Time, Part-Time, Internship....)
-        Job Function (Department within company)
-        Industry
+        Seniority level (Junior, Senior....)
+        Employment type (Full-Time, Part-Time, Internship....)
+        Job function (Department within company)
+        Industries
         """
         try:
             job_info_list = self._wd.find_element(By.CLASS_NAME, "description__job-criteria-list")
