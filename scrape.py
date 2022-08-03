@@ -1,4 +1,3 @@
-import pytest
 from sample_jobs import job_postings
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -23,12 +22,6 @@ if __name__ == "__main__":
     title = harris_job.scrape_job_title()
     print(title)
     harris_job.end_session()
-
-    # def test_method():
-    #    assert title == job_postings["L3HARRIS"]['title']
-
-    # print(harris_job)
-
 
     # ey_job = Job_Post(ey_url)
     # print(ey_job)
