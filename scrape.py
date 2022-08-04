@@ -1,4 +1,4 @@
-from sample_jobs import job_postings
+from tests.sample_jobs import job_postings
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from Post import Job_Post
