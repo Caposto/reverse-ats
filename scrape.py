@@ -17,13 +17,10 @@ ey_url = "https://www.linkedin.com/jobs/view/3148171398/?alternateChannel=search
 
 if __name__ == "__main__":
     # FIXME: How do I know if the session has gotten all of the information it needs?
-    harris_job = Job_Post(harris_url, wd)
-    # harris_job.write_to_file(harris_job.scrape_job_id() + ".txt")
-    title = harris_job.scrape_job_title()
-    print(title)
-    harris_job.end_session()
+    job = Job_Post(job_postings["MLB"]["url"], wd)
+    # title = job.scrape_job_title()
+    details = job.scrape_info_list()
+    print(details)
+    job.end_session()
 
-    # ey_job = Job_Post(ey_url)
-    # print(ey_job)
-    # ey_job.end_session()
 

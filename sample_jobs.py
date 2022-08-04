@@ -1,3 +1,19 @@
+# This file contains test cases for the Selenium Web Scraper
+# To add a test case, create a KEY (such as "EY") and fill out the job details in this format:
+# "KEY" : {
+#           "url" : "",
+#           "title" : "",
+#           "employer" : "",
+#           "id" : "",
+#           "details" : {
+#                "seniority": "",
+#                "employment" : "",
+#                "function" : "",
+#                "industry" : ""
+#           }
+#       }
+# Make sure the format is obeyed exactly as shown above or there may be issues running the test cases
+
 job_postings = {"EY" : {
                         "url" : "https://www.linkedin.com/jobs/view/3148171398/?alternateChannel=search&refId=rL4qxZB4xgCbtk2ac4s8Hg%3D%3D&trackingId=p39dPQzT8UqeUBlTgFiTbQ%3D%3D",
                         "title" : "Blockchain Analyzer Developer - Supervising Associate 1",
