@@ -1,7 +1,7 @@
-from sample_jobs import job_postings
+from .tests.sample_jobs import job_postings
+from .sample.post import Job_Post
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from Post import Job_Post
 
 options = Options()
 # FIXME: How do I run the webdriver without having a separate window pop up?
@@ -18,7 +18,6 @@ ey_url = "https://www.linkedin.com/jobs/view/3148171398/?alternateChannel=search
 if __name__ == "__main__":
     # FIXME: How do I know if the session has gotten all of the information it needs?
     job = Job_Post(job_postings["MLB"]["url"], wd)
-    # title = job.scrape_job_title()
     details = job.scrape_info_list()
     print(details)
     job.end_session()
