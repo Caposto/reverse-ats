@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 
 # FIXME: Deal with pycache
 # FIXME: Try setup and teardown approach and use pytest.mark.parameterize() on the test function
+# FIXME: Scraper is out of date, Fix after implementing Flask & SQL database
 
 # Pass into job_tag fixture
 ENTRIES = [job_post for job_post in job_postings]
@@ -23,25 +24,26 @@ class TestScraper:
         url = job_postings[request.param]["url"]
         return [Job_Post(url, wd), job_postings[request.param]] # Return pair: [Web Scraping Class, Correct Job Details]
 
-    def test_linkedin_scraper(self, scraper):
-        # Test job title
+    def test_title(self, scraper):
         assert scraper[0].scrape_job_title() == scraper[1]['title']
-
-        # Test employer
+        scraper[0].end_session()
+    
+    def test_employer(self, scraper):
         assert scraper[0].scrape_employer() == scraper[1]['employer']
+        scraper[0].end_session()
 
-        # Tets additional job information
+    def test_job_info(self, scraper):
         details = scraper[0].scrape_info_list()
         assert details["Seniority level"] == scraper[1]["details"]["seniority"]
         assert details["Employment type"] == scraper[1]["details"]["employment"]
         assert details["Job function"] == scraper[1]["details"]["function"]
         assert details["Industries"] == scraper[1]["details"]["industry"]
-
-        # Test job ID
-        assert scraper[0].scrape_job_id() == scraper[1]['id']
-
         scraper[0].end_session()
 
+    def test_id(self, scraper):
+        assert scraper[0].scrape_job_id() == scraper[1]['id']
+        scraper[0].end_session()
+    
 
 
     
