@@ -3,3 +3,5 @@
 /chromedriver.exe
 
 /.git
+
+/.env
