@@ -19,3 +19,6 @@ tzdata==2022.1
 virtualenv==20.13.4
 virtualenvwrapper-win==1.2.7
 Werkzeug==2.1.1
+spacy==3.4.1
+PyPDF2==2.11.1
+python-dotenv==0.21.0

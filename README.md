@@ -14,3 +14,4 @@ pip install -r requirements.txt
 
 Install Proper Chrome Driver from: [Here](https://chromedriver.chromium.org/downloads) and add to project directory
 
+To install proper spacy models: 'python -m spacy download en_core_web_md'
