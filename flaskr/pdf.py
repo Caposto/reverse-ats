@@ -3,7 +3,7 @@ import spacy
 import os
 
 # FIXME: Create a folder that holds all of the Resumes. Will later turn that into an SQL Database
-
+# Working with PDFs in FLASK: https://www.geeksforgeeks.org/working-with-pdf-files-in-python/
 # https://towardsdatascience.com/keyword-extraction-process-in-python-with-natural-language-processing-nlp-d769a9069d5c
 # spacy looks like a good option, I am not going to build my own NLP model for this project, I would rather just use a pre-built one, or multiple pre-built ones and cross reference their results21
 
