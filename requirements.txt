@@ -22,3 +22,4 @@ Werkzeug==2.1.1
 spacy==3.4.1
 PyPDF2==2.11.1
 python-dotenv==0.21.0
+flask-sqlalchemy==3.0.2

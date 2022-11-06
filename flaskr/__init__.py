@@ -1,14 +1,20 @@
 import os
 from flaskr.pdf import extract_text, extract_key_words
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from flaskr.config import DevelopmentConfig
 
 env_path = os.path.join(os.getcwd(), 'env')
 load_dotenv(env_path)
 
+db = SQLAlchemy()
+
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object(DevelopmentConfig) # see config.py
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+db.init_app()
 
 from .views import main
 app.register_blueprint(main)
