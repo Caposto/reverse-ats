@@ -2,7 +2,12 @@
 from . import db
 
 class Resume(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True) # Resume Id
     date = db.Column(db.DateTime)
-    content = db.Column(db.Text)
-    keywords = db.Column(db.Text)
+    content = db.Column(db.Text) # Raw Resume Content
+    keywords = db.Column(db.Text) # Keywords from resume
+
+class Comparisons(db.Model):
+    id = db.Column(db.Integer, primary_key=True) # Job Id
+    description = db.Column(db.Text) # Keywords from description
+    keywords = db.Column(db.Text) # Keywords from resume
