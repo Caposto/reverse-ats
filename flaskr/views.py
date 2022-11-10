@@ -11,7 +11,7 @@ main = Blueprint('main', __name__)
 @main.route('/extract_keywords', methods=['POST'])
 def get_keywords():
     job_description = request.get_json();
-    
-    return jsonify("RESPONSE FROM SERVER")
-
-# Call GET request in POST that deletes resource from database
+    job_description_text = job_description['description']
+    keywords = extract_key_words(job_description_text)
+    print(keywords)
+    return jsonify(keywords)
