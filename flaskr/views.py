@@ -8,7 +8,7 @@ from flaskr.pdf import extract_text, extract_key_words
 main = Blueprint('main', __name__)
 
 # Endpoint 
-@main.route('/extract_keywords', methods=['GET'])
+@main.route('/extract_keywords', methods=['POST'])
 def get_keywords():
     keywords = ["react", "flask", "postman"]
     return jsonify({'keywords': keywords})

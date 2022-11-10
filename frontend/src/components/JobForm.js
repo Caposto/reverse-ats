@@ -15,6 +15,20 @@ export const JobForm = () => {
                   onChange={e => setDescription(e.target.value)}  
                 />
             </Form.Field>
+            <Button onClick={async() => {
+                const job_description = {description};
+                const response = await fetch('/extract_keywords', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(job_description)
+                })
+
+                if (response.ok) {
+                    console.log("Job Description Recieved");
+                }
+            }}>Submit</Button>
         </Form>
     )
 }
