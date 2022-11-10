@@ -1,5 +1,4 @@
-# Handles API endpoints: what is returned for a given api request
-# FIXME: Request should recieve text and respond with JSON of keywords 
+# Handling API Endpoints
 
 from flask import Blueprint, jsonify, request
 from flaskr.pdf import extract_text, extract_key_words
