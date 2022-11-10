@@ -26,7 +26,8 @@ export const JobForm = () => {
                 })
 
                 if (response.ok) {
-                    console.log("Job Description Recieved");
+                    let res = response.json()
+                    console.log(res);
                 }
             }}>Submit</Button>
         </Form>
