@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Button, Form, Input } from 'semantic-ui-react';
+import KeywordList from './KeywordList';
 
 export const JobForm = () => {
     const [description, setDescription] = useState(''); // Create state for job description, default empty string
@@ -18,6 +19,7 @@ export const JobForm = () => {
                 </Form.Field>
                 <Button onClick={async() => {
                     const job_description = {description};
+
                     const response = await fetch('/extract_keywords', {
                         method: 'POST', // Using POST since GET does not accept a body
                         headers: {
@@ -28,16 +30,17 @@ export const JobForm = () => {
 
                     if (response.ok) {
                         let res = response.json();
-                        res.then((prom) => setKeywords(prom))
-                        console.log(res);
+                        res.then((prom) => setKeywords(prom)); // Store keywords in {keywords}
+                        // console.log(keywords)
+                        // console.log(res);
                         setDescription(''); // Clear the form
                     }
 
                 }}>Submit</Button>
             </Form>
-            <p>
-                {keywords}
-            </p>
+            <div>
+                <KeywordList keywordArray = {keywords}/>
+            </div>
         </div>
     )
 }
