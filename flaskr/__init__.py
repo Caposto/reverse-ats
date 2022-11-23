@@ -20,6 +20,7 @@ app.register_blueprint(main)
 parent_dir = os.path.join(os.getcwd(), 'flaskr')
 resume_path = os.path.join(parent_dir, "resume.pdf")
 
+# TODO: Create testing environment for testing best NLP model from spacy
 @app.route("/")
 def hello_world():
     pdf_text = extract_text(resume_path)
