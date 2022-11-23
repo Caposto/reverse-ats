@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Button, Form, Input } from 'semantic-ui-react';
-import KeywordList from './KeywordList';
+import KeywordList from './KeywordList'; // Component to display keywords
 
 export const JobForm = () => {
     const [description, setDescription] = useState(''); // Create state for job description, default empty string
