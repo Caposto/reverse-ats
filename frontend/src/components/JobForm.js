@@ -9,7 +9,7 @@ export const JobForm = () => {
     // Return form for inputting job description
     return (
         <div>
-            <Form> 
+            <Form>
                 <Form.Field>
                     <Input
                       placeholder="job description" 
