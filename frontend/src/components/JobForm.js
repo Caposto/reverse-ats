@@ -20,7 +20,7 @@ export const JobForm = () => {
                 <Button onClick={async() => {
                     const job_description = {description};
 
-                    const response = await fetch('/extract_keywords', {
+                    const response = await fetch('http://127.0.0.1:5000/extract_keywords', {
                         method: 'POST', // Using POST since GET does not accept a body
                         headers: {
                             'Content-Type': 'application/json'
