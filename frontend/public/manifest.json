@@ -7,5 +7,5 @@
       "default_popup": "index.html",
       "default_title": "Open popup"
   },
-  "permissions": ["http://localhost/*"]
+  "host_permissions": ["http://localhost/*"]
 }
