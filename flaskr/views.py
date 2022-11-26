@@ -11,5 +11,5 @@ main = Blueprint('main', __name__)
 def get_keywords():
     job_description = request.get_json();
     job_description_text = job_description['description']
-    keywords = extract_key_words(job_description_text)
+    keywords = extract_key_words(job_description_text) # list/array
     return jsonify(keywords)
