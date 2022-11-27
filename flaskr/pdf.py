@@ -12,6 +12,8 @@ def extract_text(pdf):
     page = pdf_reader.getPage(0) # Should always be one page since only accepting 1 page resumes
     return page.extractText()
 
+#FIXME: Look into: https://spacy.io/models to see if there are ways to optimize the loading process by disabling certain features
+
 # Uses "en_core_web_md"
 def extract_key_words(description):
     """Accepts a string and uses spacy to return the keywords"""
@@ -19,5 +21,9 @@ def extract_key_words(description):
     doc = nlp(description)
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
     return keyword_list
+
+# Uses "en_core_web_sm"
+# Uses "en_core_web_lg"
+# Uses "en_core_web_trf"
 
 # Uses keyBERT
