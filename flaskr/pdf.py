@@ -23,7 +23,24 @@ def extract_key_words(description):
     return keyword_list
 
 # Uses "en_core_web_sm"
+def extract_small(description):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(description)
+    keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
+    return keyword_list
+
 # Uses "en_core_web_lg"
+def extract_large(description):
+    nlp = spacy.load("en_core_web_lg")
+    doc = nlp(description)
+    keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
+    return keyword_list
+
 # Uses "en_core_web_trf"
+def extract_other(description):
+    nlp = spacy.load("en_core_web_trf")
+    doc = nlp(description)
+    keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
+    return keyword_list
 
 # Uses keyBERT
