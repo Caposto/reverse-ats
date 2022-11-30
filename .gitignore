@@ -1,7 +1,5 @@
 /venv
 
-/chromedriver.exe
-
 /.git
 
 /.env
