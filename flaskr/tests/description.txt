@@ -1,0 +1,15 @@
+We are looking for an experienced Full Stack Engineer to join our development team. 
+In this role, you will be responsible for the overall development and implementation of front and back-end software applications. 
+Your responsibilities will extend from designing system architecture to high-level programming, performance testing, and systems integration. 
+To ensure success as a Full Stack Engineer, you should have advanced programming skills, experience with application development, and excellent troubleshooting skills. 
+Top-rated Full Stack Engineers create and implement advanced software systems that perfectly meet the needs of the company. Full Stack Engineer Responsibilities:
+Meeting with the software development team to define the scope and scale of software projects. 
+Designing software system architecture. Completing data structures and design patterns. 
+Designing and implementing scalable web services, applications, and APIs. 
+Developing and maintaining internal software tools. Writing low-level and high-level code. 
+Troubleshooting and bug fixing. Identifying bottlenecks and improving software efficiency. 
+Collaborating with the design team on developing micro-services. Writing technical documents. 
+Full Stack Engineer Requirements: Bachelor’s degree in Computer Engineering or Computer Science. 
+Previous experience as a Full Stack Engineer. Advanced knowledge of front-end languages including HTML5, CSS, JavaScript, C++, and JQuery. 
+Proficient in back-end languages including Java, Python, Rails, Ruby, .NET, and PHP. Knowledge of database systems and SQL. 
+Advanced troubleshooting skills. Familiarity with JavaScript frameworks. Good communication skills. High-level project management skills.

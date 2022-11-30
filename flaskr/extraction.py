@@ -4,7 +4,8 @@ import spacy
 # Working with PDFs in FLASK: https://www.geeksforgeeks.org/working-with-pdf-files-in-python/
 # https://towardsdatascience.com/keyword-extraction-process-in-python-with-natural-language-processing-nlp-d769a9069d5c
 
-def extract_text(pdf):
+# FIXME: What is the output? A string?
+def extract_pdf_text(pdf: str):
     """Method that accepts a pdf file/path to pdf file as its argument
        and uses PyPDF2 to scrape and then return a dictionary of keywords"""
     pdf = open(pdf, 'rb')
@@ -14,30 +15,29 @@ def extract_text(pdf):
 
 #FIXME: Look into: https://spacy.io/models to see if there are ways to optimize the loading process by disabling certain features
 
-# Uses "en_core_web_md"
-def extract_key_words(description):
-    """Accepts a string and uses spacy to return the keywords"""
+def extract_keywords_md(description: str) -> list[str]:
+    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_md"""
     nlp = spacy.load("en_core_web_md")
     doc = nlp(description)
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
     return keyword_list
 
-# Uses "en_core_web_sm"
-def extract_small(description):
+def extract_keywords_sm(description: str) -> list[str]:
+    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_sm"""
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(description)
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
     return keyword_list
 
-# Uses "en_core_web_lg"
-def extract_large(description):
+def extract_keywords_lg(description: str) -> list[str]:
+    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_lg"""
     nlp = spacy.load("en_core_web_lg")
     doc = nlp(description)
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
     return keyword_list
 
-# Uses "en_core_web_trf"
-def extract_other(description):
+def extract_keywords_trf(description: str) -> list[str]:
+    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_trf"""
     nlp = spacy.load("en_core_web_trf")
     doc = nlp(description)
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
