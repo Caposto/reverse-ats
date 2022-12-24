@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flaskr.extraction import extract_keywords_md
+from flaskr.extraction import extract_keywords_md, extract_keywords_lg,extract_keywords_trf, extract_keywords_sm
 
 # Blueprint documentation: https://flask.palletsprojects.com/en/2.2.x/tutorial/views/
 # view: handles requests to the flask application
@@ -13,5 +13,5 @@ main = Blueprint('main', __name__)
 def get_keywords():
     job_description = request.get_json();
     job_description_text = job_description['description']
-    keywords = extract_keywords_md(job_description_text) # list/array
+    keywords = extract_keywords_trf(job_description_text) # list/array
     return jsonify(keywords)
