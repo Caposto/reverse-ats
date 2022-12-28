@@ -1,5 +1,6 @@
 import PyPDF2
 import spacy
+import re
 
 # Minimum Goal From Sample Description
 # HTML5, CSS, JavaScript, C++, JQuery, Java, Python, Rails, Ruby, .NET, PHP, SQL
@@ -25,26 +26,6 @@ def extract_keywords_md(description: str) -> list[str]:
     filtered_keyword_list = [w for w in keyword_list if " " not in w]
     return filtered_keyword_list
 
-def extract_keywords_sm(description: str) -> list[str]:
-    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_sm"""
-    nlp = spacy.load("en_core_web_sm")
-    doc = nlp(description)
-    keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
-    filtered_keyword_list = [w for w in keyword_list if " " not in w]
-    return filtered_keyword_list
-
-def extract_keywords_lg(description: str) -> list[str]:
-    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_lg"""
-    nlp = spacy.load("en_core_web_lg")
-    doc = nlp(description)
-    keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
-    filtered_keyword_list = [w for w in keyword_list if " " not in w]
-    return filtered_keyword_list
-
-def extract_keywords_trf(description: str) -> list[str]:
-    """Accepts a string and uses spacy to return the keywords as a list of strings using en_core_web_trf"""
-    nlp = spacy.load("en_core_web_trf")
-    doc = nlp(description)
-    keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
-    filtered_keyword_list = [w for w in keyword_list if " " not in w]
-    return filtered_keyword_list
+def extract_re(description: str) -> list[str]:
+    keywords = re.findall(r'\b[a-zA-Z]{3,}\b', description)
+    return keywords
