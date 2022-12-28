@@ -1,5 +1,4 @@
 import nltk
-nltk.download('punkt')
 
 def extract_nltk(description: str) -> list[str]:
     tokens = nltk.word_tokenize(description)

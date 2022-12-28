@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flaskr.extraction import extract_keywords_md
+from flaskr.extraction_re import extract_re
 from flaskr.extraction_nltk import extract_nltk
 
 main = Blueprint('main', __name__)
@@ -11,5 +12,5 @@ def get_keywords():
     job_description = request.get_json();
     job_description_text = job_description['description'] # Access Job Description Field in request
     # keywords = extract_keywords_md(job_description_text) # list/array : extraction.py
-    keywords = extract_nltk(job_description_text)
+    keywords = extract_re(job_description_text)
     return jsonify(keywords)
