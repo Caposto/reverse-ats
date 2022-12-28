@@ -1,8 +1,10 @@
 import PyPDF2
 import spacy
 
-# Working with PDFs in FLASK: https://www.geeksforgeeks.org/working-with-pdf-files-in-python/
-# https://towardsdatascience.com/keyword-extraction-process-in-python-with-natural-language-processing-nlp-d769a9069d5c
+# Minimum Goal From Sample Description
+# HTML5, CSS, JavaScript, C++, JQuery, Java, Python, Rails, Ruby, .NET, PHP, SQL
+
+#################################################SPACY##############################################################
 
 # FIXME: What is the output? A string?
 def extract_pdf_text(pdf: str):
@@ -46,5 +48,3 @@ def extract_keywords_trf(description: str) -> list[str]:
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
     filtered_keyword_list = [w for w in keyword_list if " " not in w]
     return filtered_keyword_list
-
-# Uses Keybert
