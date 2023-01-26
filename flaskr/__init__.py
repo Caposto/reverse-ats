@@ -1,5 +1,5 @@
 import os
-from flaskr.extraction import extract_pdf_text, extract_keywords_md, extract_keywords_lg
+from flaskr.extraction import extract_pdf_text, extract_keywords_md
 from flask import Flask, render_template
 from dotenv import load_dotenv
 from flask_cors import CORS
