@@ -1,3 +1,5 @@
+#gitignore
+
 /venv
 
 /.git
@@ -6,3 +8,4 @@
 /.flaskenv
 
 *.pyc
+__pycache__/

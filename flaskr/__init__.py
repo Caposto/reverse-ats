@@ -23,7 +23,7 @@ resume_path = os.path.join(parent_dir, "resume.pdf")
 @app.route("/")
 def hello_world():
     pdf_text = extract_pdf_text(resume_path) # get keywords from pdf file
-    keywords = extract_keywords_lg(pdf_text) # Get list of keywords from pdf
+    keywords = extract_keywords_md(pdf_text) # Get list of keywords from pdf
     return render_template("index.html", keywords=keywords)
 
 if __name__ == "__main__":
