@@ -1,8 +1,11 @@
-/venv
+#gitignore
 
-/chromedriver.exe
+/venv
 
 /.git
 
 /.env
 /.flaskenv
+
+*.pyc
+__pycache__/
