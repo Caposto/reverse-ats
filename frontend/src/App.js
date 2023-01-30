@@ -2,12 +2,12 @@ import React from 'react';
 // import { Container } from 'semantic-ui-react';
 import './App.css';
 // import { JobForm } from './components/JobForm';
-import KeywordForm from './components/KeywordForm';
+import KeywordList2 from './components/KeywordList2';
 
 function App() {
   return (
     <div className='todo-app'>
-      <KeywordForm />
+      <KeywordList2/>
     </div>
     
     /* Current Basic Reverse-ATS
