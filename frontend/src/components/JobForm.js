@@ -6,6 +6,13 @@ export const JobForm = () => {
     const [description, setDescription] = useState(''); // Create state for job description, default empty string
     const [keywords, setKeywords] = useState([]); // Create state for keywords received from server
 
+    // TODO: Edit state of list with the intial list being the keywords processed from flask
+    const [list, setList] = useState(keywords); // Pass the state variable the keywords as the "inital list"
+
+    function handleRemove() {
+        console.log("Deleted Keyword!");
+    }
+
     // Return form for inputting job description
     return (
         <div>
@@ -31,8 +38,6 @@ export const JobForm = () => {
                     if (response.ok) {
                         let res = response.json();
                         res.then((prom) => setKeywords(prom)); // Store keywords in {keywords}
-                        // console.log(keywords)
-                        // console.log(res);
                         setDescription(''); // Clear the form
                     }
 
