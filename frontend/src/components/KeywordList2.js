@@ -1,38 +1,57 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import KeywordForm from './KeywordForm';
 import Keyword from './Keyword';
-import KeywordForm from './KeywordForm'
 
 function KeywordList2() {
-    const[keywords, setKeywords] = useState([]); // FIXME: Can I pass the inital state to be the result of the API? try UseEffect hook 
+  const [keywords, setKeywords] = useState([]);
 
-    const addKeyword = keyword => {
-        if (!keyword.text || /^\s*$/.test(keyword.text)) {
-            return
-        }
-
-        const newKeywords = [keyword, ...keywords]
-
-        setKeywords(newKeywords) // Update state with new keywords
+  const addKeyword = keyword => {
+    if (!keyword.text || /^\s*$/.test(keyword.text)) {
+      return;
     }
 
-    const completeKeywords = id => {
-        let updatedKeywords = keywords.map(keyword => {
-            if (keyword.id === id) {
-                keyword.isComplete = !keyword.isComplete
-            }
-            return keyword 
-        })
+    const newKeywords = [keyword, ...keywords];
 
-        setKeywords(updatedKeywords)
+    setKeywords(newKeywords);
+    console.log(...keywords);
+  };
+
+  const updateKeyword = (todoId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+      return;
     }
 
-    return (
-      <div>
-          <h1>Reverse-ATS</h1>
-          <KeywordForm onSubmit={addKeyword}/>
-          <Keyword keywords={keywords} completeKeywords={completeKeywords}/>
-      </div>
-    )
+    setKeywords(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+  };
+
+  const removeKeyword = id => {
+    const removedArr = [...keywords].filter(keyword => keyword.id !== id);
+
+    setKeywords(removedArr);
+  };
+
+  const completeKeyword = id => {
+    let updatedKeywords = keywords.map(keyword => {
+      if (keyword.id === id) {
+        keyword.isComplete = !keyword.isComplete;
+      }
+      return keyword;
+    });
+    setKeywords(updatedKeywords);
+  };
+
+  return (
+    <>
+      <h1>What's the Plan for Today?</h1>
+      <KeywordForm onSubmit={addKeyword} />
+      <Keyword
+        keywords={keywords}
+        completeKeyword={completeKeyword}
+        removeKeyword={removeKeyword}
+        updateKeyword={updateKeyword}
+      />
+    </>
+  );
 }
 
-export default KeywordList2
+export default KeywordList2;

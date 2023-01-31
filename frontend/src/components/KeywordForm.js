@@ -1,37 +1,61 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function KeywordForm(props) {
-    const [input, setInput] = useState('');
+  const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
-    const handleChange = e => {
-      setInput(e.target.value);
-    };
+  const inputRef = useRef(null);
 
-    const handleSubmit = e => {
-      e.preventDefault();
+  useEffect(() => {
+    inputRef.current.focus();
+  });
 
-      props.onSubmit ({
-        id: Math.floor(Math.random() * 10000), // FIXME: Is this ID necessary
-        text: input
-      });
+  const handleChange = e => {
+    setInput(e.target.value);
+  };
 
-      setInput('');
-    };
+  const handleSubmit = e => {
+    e.preventDefault();
 
-    return (
-      <form className="keyword-form" onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            placeholder="Add a Keyword" 
+    props.onSubmit({
+      id: Math.floor(Math.random() * 10000),
+      text: input
+    });
+    setInput('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className='keyword-form'>
+      {props.edit ? (
+        <>
+          <input
+            placeholder='Update your item'
             value={input}
-            name="text"
+            onChange={handleChange}
+            name='text'
+            ref={inputRef}
+            className='keyword-input edit'
+          />
+          <button onClick={handleSubmit} className='keyword-button edit'>
+            Update
+          </button>
+        </>
+      ) : (
+        <>
+          <input
+            placeholder='Add a keyword'
+            value={input}
+            onChange={handleChange}
+            name='text'
             className='keyword-input'
-            onChange={handleChange}>
-          </input>
-    
-          <button className='todo-button'>Add Keyword</button>
-      </form>
-    );
+            ref={inputRef}
+          />
+          <button onClick={handleSubmit} className='keyword-button'>
+            Add keyword
+          </button>
+        </>
+      )}
+    </form>
+  );
 }
 
 export default KeywordForm;
