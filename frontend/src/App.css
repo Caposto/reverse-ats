@@ -13,6 +13,7 @@ body {
     rgba(100, 115, 255, 1) 100%
   );
 }
+
 .keyword-app {
   display: flex;
   flex-direction: column;
@@ -89,6 +90,7 @@ h1 {
   position: relative;
 }
 
+/* Default color blue, in resume green, not in resume red */
 .keyword-row {
   display: flex;
   justify-content: space-between;
