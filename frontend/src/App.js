@@ -6,7 +6,7 @@ import KeywordList2 from './components/KeywordList2';
 
 function App() {
   return (
-    <div className='todo-app'>
+    <div className='keyword-app'>
       <KeywordList2/>
     </div>
     

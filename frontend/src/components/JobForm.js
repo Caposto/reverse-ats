@@ -27,6 +27,7 @@ export const JobForm = () => {
                 <Button onClick={async() => {
                     const job_description = {description};
 
+                    // TODO: store url for server in a .env file
                     const response = await fetch('http://127.0.0.1:5000/extract_keywords', {
                         method: 'POST', // Using POST since GET does not accept a body
                         headers: {
