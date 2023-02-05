@@ -1,26 +1,31 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import ReactDOM from "react-dom/client";
 import './App.css';
-import { JobForm } from './components/JobForm';
-import KeywordList2 from './components/KeywordList2';
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import EntryForm from './routes';
+import NotFound from './routes/error';
+import CurrentKeywords from './routes/list';
+
+// Router object handles all of the different url paths - similar to webpack chunks
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <EntryForm />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/list",
+    element: <CurrentKeywords />,
+    errorElement: <NotFound />,
+  }
+]);
 
 function App() {
-  let home = true;
-  
-  if (home) {
-    return (
-      <div className='keyword-app'>
-        <KeywordList2/>
-      </div> )
-  } else {
-    return (
-      <div className="App">
-        <Container>
-          <JobForm />
-        </Container>
-      </div>
-    )
-  }
+  ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  );
 }
 
 export default App;
