@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import KeywordList from './KeywordList'; // Component to display keywords
 
 export const JobForm = () => {
@@ -30,7 +30,7 @@ export const JobForm = () => {
         }
     }
 
-    // Return form for inputting job description
+    // Return form for inputting job description/
     return (
         <div id="standard-form">
             <form onSubmit={handleSubmit}>

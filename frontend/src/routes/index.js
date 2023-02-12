@@ -1,15 +1,13 @@
-import React from 'react';
+// Initial page containing the JobForm Component
+
 import { JobForm } from '../components/JobForm';
-import { Container } from 'semantic-ui-react';
 
 const EntryForm = () => {
     return (
-        <div className="App">
-          <Container>
-            <JobForm />
-          </Container>
-        </div>
-      )
+      <div className="App">
+          <JobForm />
+      </div>
+    )
 }
 
 export default EntryForm;
