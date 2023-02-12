@@ -1,9 +1,11 @@
 import {useState} from 'react';
+import KeywordList2 from './KeywordList2';
 import KeywordList from './KeywordList'; // Component to display keywords
 
 export const JobForm = () => {
     const [description, setDescription] = useState(''); // Create state for job description, default empty string
     const [keywords, setKeywords] = useState([]); // Create state for keywords received from server
+    const [visible, setVisibility] = useState(true); // Hide form once submitted
 
     // TODO: Edit state of list with the intial list being the keywords processed from flask
 
@@ -24,6 +26,7 @@ export const JobForm = () => {
                 let res = response.json();
                 res.then((prom) => setKeywords(prom)); // Store keywords in {keywords}
                 setDescription(''); // Clear the form
+                setVisibility(false);
             }
         } catch (err) {
             console.log(err);
@@ -33,18 +36,21 @@ export const JobForm = () => {
     // Return form for inputting job description/
     return (
         <div id="standard-form">
-            <form onSubmit={handleSubmit}>
-                <input 
-                    placeholder='Paste Job Description'
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                />
-                <button type="submit">Submit</button>
-            </form>
-
-            <div id="keyword-list">
-                <KeywordList keywordArray={keywords}/>
-            </div>
+            {visible && (
+                <form onSubmit={handleSubmit}>
+                    <input 
+                        placeholder='Paste Job Description'
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                    />
+                    <button type="submit">Submit</button>
+                </form> 
+            )}
+            {!visible && (
+                <div className='keyword-app'>
+                    <KeywordList2/>
+                </div> 
+            )}
         </div>
     )
 }
