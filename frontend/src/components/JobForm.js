@@ -1,11 +1,11 @@
-import {useState} from 'react';
-import KeywordList2 from './KeywordList2';
-import KeywordList from './KeywordList'; // Component to display keywords
+import {useState, useContext} from 'react';
+import KeywordList from './KeywordList';
+import { KeywordContext } from '../App';
 
 export const JobForm = () => {
     const [description, setDescription] = useState(''); // Create state for job description, default empty string
-    const [keywords, setKeywords] = useState([]); // Create state for keywords received from server
     const [visible, setVisibility] = useState(true); // Hide form once submitted
+    const [keywords, setKeywords] = useContext(KeywordContext); // Create state for keywords received from server
 
     // TODO: Edit state of list with the intial list being the keywords processed from flask
 
@@ -47,8 +47,8 @@ export const JobForm = () => {
                 </form> 
             )}
             {!visible && (
-                <div className='keyword-app'>
-                    <KeywordList2/>
+                <div>
+                    <KeywordList keywordArray={keywords}/>
                 </div> 
             )}
         </div>
