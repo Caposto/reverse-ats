@@ -23,4 +23,4 @@ python-dotenv==0.21.0
 flask-sqlalchemy==3.0.2
 pytest==7.2.0
 spacy==3.4.1
-en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.4.1/en_core_web_sm-3.4.1-py3-none-any.whl
+en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.4.1/en_core_web_md-3.4.1-py3-none-any.whl
