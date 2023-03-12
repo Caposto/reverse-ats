@@ -1,13 +1,13 @@
 // Initial page containing the JobForm Component
 
-import { JobForm } from '../components/JobForm';
+import { JobForm } from "../components/JobForm";
 
-const EntryForm = () => {
-    return (
-      <div className="App">
-          <JobForm />
-      </div>
-    )
+function EntryForm() {
+  return (
+    <div className="App">
+      <JobForm />
+    </div>
+  );
 }
 
 export default EntryForm;

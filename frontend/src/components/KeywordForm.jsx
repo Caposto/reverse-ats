@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 
 function KeywordForm(props) {
-  const [input, setInput] = useState(props.edit ? props.edit.value : '');
+  const [input, setInput] = useState(props.edit ? props.edit.value : "");
 
   const inputRef = useRef(null);
 
@@ -9,47 +9,47 @@ function KeywordForm(props) {
     inputRef.current.focus();
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     props.onSubmit({
       id: Math.floor(Math.random() * 10000),
-      text: input
+      text: input,
     });
-    setInput('');
+    setInput("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className='keyword-form'>
+    <form onSubmit={handleSubmit} className="keyword-form">
       {props.edit ? (
         <>
           <input
-            placeholder='Update your item'
+            placeholder="Update your item"
             value={input}
             onChange={handleChange}
-            name='text'
+            name="text"
             ref={inputRef}
-            className='keyword-input edit'
+            className="keyword-input edit"
           />
-          <button onClick={handleSubmit} className='keyword-button edit'>
+          <button onClick={handleSubmit} className="keyword-button edit">
             Update
           </button>
         </>
       ) : (
         <>
           <input
-            placeholder='Add a keyword'
+            placeholder="Add a keyword"
             value={input}
             onChange={handleChange}
-            name='text'
-            className='keyword-input'
+            name="text"
+            className="keyword-input"
             ref={inputRef}
           />
-          <button onClick={handleSubmit} className='keyword-button'>
+          <button onClick={handleSubmit} className="keyword-button">
             Add keyword
           </button>
         </>
