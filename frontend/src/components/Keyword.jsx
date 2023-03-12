@@ -22,12 +22,22 @@ function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
     return <KeywordForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  return keywords.map((keyword, index) => (
+  return keywords.map((keyword) => (
     <div
       className={keyword.isComplete ? "keyword-row complete" : "keyword-row"}
-      key={index}
+      key={keyword.id}
     >
-      <div key={keyword.id} onClick={() => completeKeyword(keyword.id)}>
+      <div
+        key={keyword.id}
+        onClick={() => completeKeyword(keyword.id)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            completeKeyword(keyword.id);
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
         {keyword.text}
       </div>
       <div className="icons">
@@ -45,11 +55,13 @@ function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
 }
 
 Keyword.propTypes = {
-  keywords: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-    isCompleted: PropTypes.bool.isRequired,
-  }).isRequired,
+  keywords: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      isCompleted: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
   completeKeyword: PropTypes.func.isRequired,
   removeKeyword: PropTypes.func.isRequired,
   updateKeyword: PropTypes.func.isRequired,

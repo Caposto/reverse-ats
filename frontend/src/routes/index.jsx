@@ -1,6 +1,6 @@
 // Initial page containing the JobForm Component
 
-import { JobForm } from "../components/JobForm";
+import JobForm from "../components/JobForm";
 
 function EntryForm() {
   return (

@@ -33,7 +33,10 @@ function KeywordList2() {
   const completeKeyword = (id) => {
     const updatedKeywords = keywords.map((keyword) => {
       if (keyword.id === id) {
-        keyword.isComplete = !keyword.isComplete;
+        return {
+          ...keyword,
+          isComplete: !keyword.isComplete,
+        };
       }
       return keyword;
     });
@@ -42,7 +45,7 @@ function KeywordList2() {
 
   return (
     <>
-      <h1>What's the Plan for Today?</h1>
+      <h1>What Is the Plan for Today?</h1>
       <KeywordForm onSubmit={addKeyword} />
       <Keyword
         keywords={keywords}

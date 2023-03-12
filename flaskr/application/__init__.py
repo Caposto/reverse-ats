@@ -11,7 +11,7 @@ def init_app():
   """Initialize the core application"""
   app = Flask(__name__, instance_relative_config=True)
   app.config.from_object(DevelopmentConfig) # Configure app from config.py
-  # cors = CORS(app)
+  cors = CORS(app)
   app.config['CORS_HEADERS'] = 'Content-Type'
 
   with app.app_context():

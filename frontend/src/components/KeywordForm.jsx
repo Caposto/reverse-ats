@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
-function KeywordForm(props) {
-  const [input, setInput] = useState(props.edit ? props.edit.value : "");
+function KeywordForm({ edit, onSubmit }) {
+  const [input, setInput] = useState(edit ? edit.value : "");
 
   const inputRef = useRef(null);
 
@@ -16,7 +17,7 @@ function KeywordForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    props.onSubmit({
+    onSubmit({
       id: Math.floor(Math.random() * 10000),
       text: input,
     });
@@ -25,7 +26,7 @@ function KeywordForm(props) {
 
   return (
     <form onSubmit={handleSubmit} className="keyword-form">
-      {props.edit ? (
+      {edit ? (
         <>
           <input
             placeholder="Update your item"
@@ -35,7 +36,7 @@ function KeywordForm(props) {
             ref={inputRef}
             className="keyword-input edit"
           />
-          <button onClick={handleSubmit} className="keyword-button edit">
+          <button type="submit" onClick={handleSubmit} className="keyword-button edit">
             Update
           </button>
         </>
@@ -49,7 +50,7 @@ function KeywordForm(props) {
             className="keyword-input"
             ref={inputRef}
           />
-          <button onClick={handleSubmit} className="keyword-button">
+          <button type="submit" onClick={handleSubmit} className="keyword-button">
             Add keyword
           </button>
         </>
@@ -57,5 +58,17 @@ function KeywordForm(props) {
     </form>
   );
 }
+
+KeywordForm.propTypes = {
+  edit: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
+  onSubmit: PropTypes.func.isRequired,
+};
+
+KeywordForm.defaultProps = {
+  edit: null,
+};
 
 export default KeywordForm;
