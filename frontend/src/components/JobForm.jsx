@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import KeywordList from "./KeywordList";
-import { KeywordContext } from "../App";
+import KeywordContext from "../context";
 
-export function JobForm() {
+function JobForm() {
   const [description, setDescription] = useState(""); // Create state for job description, default empty string
   const [visible, setVisibility] = useState(true); // Hide form once submitted
   const [keywords, setKeywords] = useContext(KeywordContext); // Create state for keywords received from server
@@ -54,3 +54,5 @@ export function JobForm() {
     </div>
   );
 }
+
+export default JobForm;

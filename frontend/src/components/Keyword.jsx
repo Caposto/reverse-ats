@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
+import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 
 function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
@@ -42,5 +43,16 @@ function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
     </div>
   ));
 }
+
+Keyword.propTypes = {
+  keywords: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    isCompleted: PropTypes.bool.isRequired,
+  }).isRequired,
+  completeKeyword: PropTypes.func.isRequired,
+  removeKeyword: PropTypes.func.isRequired,
+  updateKeyword: PropTypes.func.isRequired,
+};
 
 export default Keyword;
