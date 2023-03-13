@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flaskr.extraction import extract_keywords_md
+from .extraction import extract_keywords_md
 
 main = Blueprint('main', __name__)
 

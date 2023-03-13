@@ -2,16 +2,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
+    Arial, sans-serif;
 }
 
 body {
-  background: linear-gradient(
-    90deg,
-    rgb(95, 70, 255) 0%,
-    rgba(100, 115, 255, 1) 100%
-  );
+  background: linear-gradient(90deg, rgb(95, 70, 255) 0%, rgba(100, 115, 255, 1) 100%);
 }
 
 .keyword-app {
@@ -62,11 +58,7 @@ h1 {
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   outline: none;
-  background: linear-gradient(
-    90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, rgba(155, 0, 250, 1) 100%);
   color: #fff;
   text-transform: capitalize;
 }
@@ -97,11 +89,7 @@ h1 {
   align-items: center;
   margin: 4px auto;
   color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgb(2, 129, 46) 0%,
-    rgb(2, 200, 58) 100%
-  );
+  background: linear-gradient(90deg, rgb(2, 129, 46) 0%, rgb(2, 200, 58) 100%);
 
   padding: 16px;
   border-radius: 5px;
@@ -109,19 +97,11 @@ h1 {
 }
 
 .keyword-row:nth-child(4n + 1) {
-  background: linear-gradient(
-    90deg,
-    rgba(247, 9, 9, 1) 0%,
-    rgba(180, 4, 4, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(247, 9, 9, 1) 0%, rgba(180, 4, 4, 1) 100%);
 }
 
 .keyword-row:nth-child(4n + 2) {
-  background: linear-gradient(
-    90deg,
-    rgb(38, 0, 255) 0%,
-    rgb(5, 25, 240) 100%
-  );
+  background: linear-gradient(90deg, rgb(38, 0, 255) 0%, rgb(5, 25, 240) 100%);
 }
 
 .todo-row:nth-child(4n + 3) {
@@ -147,5 +127,3 @@ h1 {
 .edit-icon {
   color: #fff;
 }
-
-

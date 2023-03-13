@@ -5,7 +5,3 @@
 /.git
 
 /.env
-/.flaskenv
-
-*.pyc
-__pycache__/

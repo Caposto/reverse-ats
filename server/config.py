@@ -9,7 +9,6 @@ class Config(object):
     TESTING = False
     FLASK_APP=environ.get("FLASK_APP")
     FLASK_ENV=environ.get("FLASK_ENV")
-    # SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
 
