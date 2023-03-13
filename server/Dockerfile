@@ -1,9 +1,13 @@
 FROM python:3.10
-WORKDIR /
 
-COPY requirements.txt requirements.txt 
+WORKDIR /app
+
+ENV FLASK_DEBUG=1
+
+COPY ./requirements.txt .
+
 RUN pip3 install -r requirements.txt 
 
 COPY . .
 
-CMD [ "python3", "-m", "flask", "run", "--host=0.0.0.0" ]
+CMD [ "python3", "wsgi.py" ]
