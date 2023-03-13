@@ -43,7 +43,9 @@ function JobForm() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button type="submit">Submit</button>
+          <button className="text-2xl" type="submit">
+            Submit
+          </button>
         </form>
       )}
       {!visible && (
