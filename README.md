@@ -1,6 +1,6 @@
-#Reverse ATS
+# Reverse ATS
 
-# Installation/Setup
+## Installation/Setup
 
 ```
 git clone https://github.com/Caposto/reverse-ats.git
