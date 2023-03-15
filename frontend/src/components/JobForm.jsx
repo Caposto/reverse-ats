@@ -35,33 +35,22 @@ function JobForm() {
 
   // Return form for inputting job description/
   return (
-    <div id="standard-form">
-      {visible && (
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Paste Job Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <button className="text-xl" type="submit">
-            Submit
-          </button>
-        </form>
-      )}
+    <div id="standard-form" className="px-8 py-8">
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Paste Job Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button className="text-xl" type="submit">
+          Submit
+        </button>
+      </form>
+      {visible && <div />}
       {!visible && (
         <div>
-          {" "}
-          <form onSubmit={handleSubmit}>
-            <input
-              placeholder="Paste Job Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <button className="text-xl" type="submit">
-              Submit
-            </button>
-          </form>
-          <div>
+          <div className="py-4">
+            <p className="text-2xl">Keywords:</p>
             <KeywordList keywordArray={keywords} />
           </div>
         </div>

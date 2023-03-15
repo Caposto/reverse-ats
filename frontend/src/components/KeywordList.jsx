@@ -5,7 +5,6 @@ export default function KeywordList({ keywordArray }) {
   const keywordItems = uniqueKeywords.map((k) => <li key={k.id}>{k}</li>);
   return (
     <div>
-      <h1>KEYWORDS</h1>
       <ul>{keywordItems}</ul>
     </div>
   );
