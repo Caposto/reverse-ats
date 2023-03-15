@@ -43,14 +43,27 @@ function JobForm() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button className="text-2xl" type="submit">
+          <button className="text-xl" type="submit">
             Submit
           </button>
         </form>
       )}
       {!visible && (
         <div>
-          <KeywordList keywordArray={keywords} />
+          {" "}
+          <form onSubmit={handleSubmit}>
+            <input
+              placeholder="Paste Job Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <button className="text-xl" type="submit">
+              Submit
+            </button>
+          </form>
+          <div>
+            <KeywordList keywordArray={keywords} />
+          </div>
         </div>
       )}
     </div>
