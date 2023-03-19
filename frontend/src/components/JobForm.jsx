@@ -1,11 +1,11 @@
-import { useState } from "react";
-// import KeywordList from "./KeywordList";
-import KeywordList2 from "./KeywordList2";
+import { useState, useContext } from "react";
+import KeywordList from "./KeywordList";
+import KeywordContext from "../context";
 
 function JobForm() {
   const [description, setDescription] = useState(""); // Create state for job description, default empty string
   const [visible, setVisibility] = useState(true); // Hide form once submitted
-  const [keywords, setKeywords] = useState([]); // Create state for keywords received from server
+  const [keywords, setKeywords] = useContext(KeywordContext); // Create state for keywords received from server
 
   // TODO: Edit state of list with the intial list being the keywords processed from flask
 
@@ -35,24 +35,22 @@ function JobForm() {
 
   // Return form for inputting job description/
   return (
-    <div id="standard-form" className="px-8 py-8">
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Paste Job Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button className="text-xl" type="submit">
-          Submit
-        </button>
-      </form>
-      {visible && <div />}
+    <div id="standard-form">
+      {visible && (
+        <form onSubmit={handleSubmit}>
+          <input
+            placeholder="Paste Job Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <button className="text-2xl" type="submit">
+            Submit
+          </button>
+        </form>
+      )}
       {!visible && (
         <div>
-          <div className="py-4">
-            <p className="text-2xl">Keywords:</p>
-            <KeywordList2 initial={keywords} />
-          </div>
+          <KeywordList keywordArray={keywords} />
         </div>
       )}
     </div>
