@@ -1,9 +1,16 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 import Keyword from "./Keyword";
 
-function KeywordList2() {
-  const [keywords, setKeywords] = useState([]);
+function KeywordList2({ initial }) {
+  const [keywords, setKeywords] = useState(
+    initial.map((keyword, index) => ({
+      id: index + 1,
+      text: keyword,
+      isComplete: false,
+    }))
+  );
 
   const addKeyword = (keyword) => {
     if (!keyword.text || /^\s*$/.test(keyword.text)) {
@@ -13,39 +20,37 @@ function KeywordList2() {
     const newKeywords = [keyword, ...keywords];
 
     setKeywords(newKeywords);
-    console.log(...keywords);
   };
 
-  const updateKeyword = (todoId, newValue) => {
+  const updateKeyword = (keywordId, newValue) => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return;
     }
 
-    setKeywords((prev) => prev.map((item) => (item.id === todoId ? newValue : item)));
+    setKeywords((prevKeywords) =>
+      prevKeywords.map((keyword) =>
+        keyword.id === keywordId ? { ...keyword, ...newValue } : keyword
+      )
+    );
   };
 
-  const removeKeyword = (id) => {
-    const removedArr = [...keywords].filter((keyword) => keyword.id !== id);
+  const removeKeyword = (keywordId) => {
+    const removedArr = keywords.filter((keyword) => keyword.id !== keywordId);
 
     setKeywords(removedArr);
   };
 
-  const completeKeyword = (id) => {
-    const updatedKeywords = keywords.map((keyword) => {
-      if (keyword.id === id) {
-        return {
-          ...keyword,
-          isComplete: !keyword.isComplete,
-        };
-      }
-      return keyword;
-    });
+  const completeKeyword = (keywordId) => {
+    const updatedKeywords = keywords.map((keyword) =>
+      keyword.id === keywordId ? { ...keyword, isComplete: !keyword.isComplete } : keyword
+    );
+
     setKeywords(updatedKeywords);
   };
 
   return (
-    <>
-      <h1>What Is the Plan for Today?</h1>
+    <div>
+      <h1>Keywords</h1>
       <KeywordForm onSubmit={addKeyword} />
       <Keyword
         keywords={keywords}
@@ -53,8 +58,16 @@ function KeywordList2() {
         removeKeyword={removeKeyword}
         updateKeyword={updateKeyword}
       />
-    </>
+    </div>
   );
 }
+
+KeywordList2.propTypes = {
+  initial: PropTypes.arrayOf(PropTypes.string),
+};
+
+KeywordList2.defaultProps = {
+  initial: [],
+};
 
 export default KeywordList2;

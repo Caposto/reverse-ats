@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import EntryForm from "./routes/index";
-import NotFound from "./routes/error";
-import CurrentKeywords from "./routes/list";
+import EntryForm from "./routes/EntryForm";
+import NotFound from "./routes/NotFound";
+import CurrentKeywords from "./routes/CurrentKeywords";
 import KeywordContext from "./context";
 
 function App() {
