@@ -1,12 +1,11 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import KeywordList from "./KeywordList";
-import KeywordContext from "../context";
 import getKeywordsFromFlask from "../Services/User";
 
 function JobForm() {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
-  const [keywords, setKeywords] = useContext(KeywordContext);
+  const [keywords, setKeywords] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
