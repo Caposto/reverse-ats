@@ -22,18 +22,17 @@ function JobForm() {
 
   return (
     <div id="standard-form">
-      {visible && (
-        <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Paste Job Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <button className="text-2xl" type="submit">
-            Submit
-          </button>
-        </form>
-      )}
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Paste Job Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button className="text-2xl" type="submit">
+          Submit
+        </button>
+      </form>
+      {visible && <h2 className="text-lg"> Enter the job description above </h2>}
       {!visible && (
         <div>
           <KeywordList keywordArray={keywords} />
