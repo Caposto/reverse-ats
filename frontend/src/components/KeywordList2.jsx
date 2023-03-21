@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 import Keyword from "./Keyword";
@@ -11,6 +11,11 @@ function KeywordList2({ initial }) {
       isComplete: false,
     }))
   );
+
+  useEffect(() => {
+    setKeywords(initial);
+    console.log("initial", initial);
+  }, [keywords]);
 
   const addKeyword = (keyword) => {
     if (!keyword.text || /^\s*$/.test(keyword.text)) {

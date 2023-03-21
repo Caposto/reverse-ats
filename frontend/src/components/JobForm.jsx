@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import KeywordList from "./KeywordList";
 import KeywordList2 from "./KeywordList2";
 import getKeywordsFromFlask from "../Services/User";
@@ -8,17 +8,11 @@ function JobForm() {
   const [visible, setVisibility] = useState(true);
   const [keywords, setKeywords] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const apiKeywords = await getKeywordsFromFlask(description);
-      setKeywords(apiKeywords);
-    };
-    fetchData();
-  }, [description]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const apiKeywords = await getKeywordsFromFlask(description);
+      setKeywords(apiKeywords);
       setDescription("");
       setVisibility(false);
     } catch (err) {
