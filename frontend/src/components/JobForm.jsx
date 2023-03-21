@@ -1,5 +1,4 @@
 import { useState } from "react";
-import KeywordList from "./KeywordList";
 import KeywordList2 from "./KeywordList2";
 import getKeywordsFromFlask from "../Services/User";
 
@@ -35,12 +34,7 @@ function JobForm() {
       {visible && <h2 className="text-lg"> Enter the job description above </h2>}
       {!visible && (
         <div>
-          <div>
-            <KeywordList keywordArray={keywords} />
-          </div>
-          <div>
-            <KeywordList2 initial={keywords} />
-          </div>
+          <KeywordList2 initial={keywords} />
         </div>
       )}
     </div>

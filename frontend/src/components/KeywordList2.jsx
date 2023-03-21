@@ -4,26 +4,24 @@ import KeywordForm from "./KeywordForm";
 import Keyword from "./Keyword";
 
 function KeywordList2({ initial }) {
-  const [keywords, setKeywords] = useState(
-    initial.map((keyword, index) => ({
-      id: index + 1,
-      text: keyword,
-      isComplete: false,
-    }))
-  );
+  const [keywords, setKeywords] = useState([]);
 
+  // Update KeywordList2 with the result of the API call
   useEffect(() => {
-    setKeywords(initial);
-    console.log("initial", initial);
-  }, [keywords]);
+    setKeywords(
+      initial.map((keyword, index) => ({
+        id: index + 1,
+        text: keyword,
+        isComplete: false,
+      }))
+    );
+  }, []); // Fixed issue where useEffect prevented editing by chaning [keywords] to [] for 2nd arg
 
   const addKeyword = (keyword) => {
     if (!keyword.text || /^\s*$/.test(keyword.text)) {
       return;
     }
-
     const newKeywords = [keyword, ...keywords];
-
     setKeywords(newKeywords);
   };
 
@@ -31,7 +29,6 @@ function KeywordList2({ initial }) {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return;
     }
-
     setKeywords((prevKeywords) =>
       prevKeywords.map((keyword) =>
         keyword.id === keywordId ? { ...keyword, ...newValue } : keyword
@@ -41,7 +38,6 @@ function KeywordList2({ initial }) {
 
   const removeKeyword = (keywordId) => {
     const removedArr = keywords.filter((keyword) => keyword.id !== keywordId);
-
     setKeywords(removedArr);
   };
 
@@ -49,7 +45,6 @@ function KeywordList2({ initial }) {
     const updatedKeywords = keywords.map((keyword) =>
       keyword.id === keywordId ? { ...keyword, isComplete: !keyword.isComplete } : keyword
     );
-
     setKeywords(updatedKeywords);
   };
 
