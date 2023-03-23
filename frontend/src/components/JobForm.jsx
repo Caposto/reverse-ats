@@ -1,11 +1,13 @@
 import { useState } from "react";
 import KeywordList from "./KeywordList";
+import Error from "./Error";
 import getKeywordsFromFlask from "../services/User";
 
 function JobForm() {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
   const [keywords, setKeywords] = useState([]);
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ function JobForm() {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
+      setError(true);
     }
   };
 
@@ -24,7 +27,7 @@ function JobForm() {
     <div id="standard-form">
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="Paste Job Description"
+          placeholder="Enter Job Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -32,12 +35,12 @@ function JobForm() {
           Submit
         </button>
       </form>
-      {visible && <h2 className="text-lg"> Enter the job description above </h2>}
-      {!visible && (
+      {!visible && !error && (
         <div>
           <KeywordList initial={keywords} />
         </div>
       )}
+      {error && <Error />}
     </div>
   );
 }

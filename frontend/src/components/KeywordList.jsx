@@ -50,7 +50,6 @@ function KeywordList({ initial }) {
 
   return (
     <div>
-      <h1>Keywords</h1>
       <KeywordForm onSubmit={addKeyword} />
       <Keyword
         keywords={keywords}
