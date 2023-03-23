@@ -1,6 +1,6 @@
 import { useState } from "react";
 import KeywordList from "./KeywordList";
-import getKeywordsFromFlask from "../Services/User";
+import getKeywordsFromFlask from "../services/User";
 
 function JobForm() {
   const [description, setDescription] = useState("");
