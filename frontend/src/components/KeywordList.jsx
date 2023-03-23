@@ -1,25 +1,72 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import KeywordForm from "./KeywordForm";
+import Keyword from "./Keyword";
 
-export default function KeywordList({ keywordArray }) {
-  const uniqueKeywords = [...new Set(keywordArray)];
-  const keywordItems = uniqueKeywords.map((k) => <li key={k.id}>{k}</li>);
+function KeywordList({ initial }) {
+  const [keywords, setKeywords] = useState([]);
+
+  // Update KeywordList2 with the result of the API call
+  useEffect(() => {
+    setKeywords(
+      initial.map((keyword, index) => ({
+        id: index + 1,
+        text: keyword,
+        isComplete: false,
+      }))
+    );
+  }, []); // Fixed issue where useEffect prevented editing by chaning [keywords] to [] for 2nd arg
+
+  const addKeyword = (keyword) => {
+    if (!keyword.text || /^\s*$/.test(keyword.text)) {
+      return;
+    }
+    const newKeywords = [keyword, ...keywords];
+    setKeywords(newKeywords);
+  };
+
+  const updateKeyword = (keywordId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+      return;
+    }
+    setKeywords((prevKeywords) =>
+      prevKeywords.map((keyword) =>
+        keyword.id === keywordId ? { ...keyword, ...newValue } : keyword
+      )
+    );
+  };
+
+  const removeKeyword = (keywordId) => {
+    const removedArr = keywords.filter((keyword) => keyword.id !== keywordId);
+    setKeywords(removedArr);
+  };
+
+  const completeKeyword = (keywordId) => {
+    const updatedKeywords = keywords.map((keyword) =>
+      keyword.id === keywordId ? { ...keyword, isComplete: !keyword.isComplete } : keyword
+    );
+    setKeywords(updatedKeywords);
+  };
+
   return (
     <div>
-      <ul>{keywordItems}</ul>
+      <KeywordForm onSubmit={addKeyword} />
+      <Keyword
+        keywords={keywords}
+        completeKeyword={completeKeyword}
+        removeKeyword={removeKeyword}
+        updateKeyword={updateKeyword}
+      />
     </div>
   );
 }
 
 KeywordList.propTypes = {
-  keywordArray: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-      isCompleted: PropTypes.bool.isRequired,
-    })
-  ),
+  initial: PropTypes.arrayOf(PropTypes.string),
 };
 
 KeywordList.defaultProps = {
-  keywordArray: null,
+  initial: [],
 };
+
+export default KeywordList;
