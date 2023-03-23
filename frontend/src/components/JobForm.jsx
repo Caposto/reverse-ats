@@ -6,17 +6,21 @@ import getKeywordsFromFlask from "../services/User";
 function JobForm() {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
   const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const apiKeywords = await getKeywordsFromFlask(description);
       setKeywords(apiKeywords);
       setDescription("");
       setVisibility(false);
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       // eslint-disable-next-line no-console
       console.log(err);
       setError(true);
@@ -32,7 +36,7 @@ function JobForm() {
           onChange={(e) => setDescription(e.target.value)}
         />
         <button className="text-2xl" type="submit">
-          Submit
+          {loading ? <>Loading..</> : <>Search</>}
         </button>
       </form>
       {!visible && !error && (
