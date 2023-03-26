@@ -2,7 +2,7 @@
 
 import JobForm from "./JobForm";
 
-function EntryForm() {
+function Home() {
   return (
     <div className="App">
       <JobForm />
@@ -10,4 +10,4 @@ function EntryForm() {
   );
 }
 
-export default EntryForm;
+export default Home;
