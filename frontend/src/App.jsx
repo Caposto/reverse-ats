@@ -1,7 +1,7 @@
-import Home from "./components/Home";
+import JobForm from "./components/JobForm";
 
 function App() {
-  return <Home />;
+  return <JobForm />;
 }
 
 export default App;

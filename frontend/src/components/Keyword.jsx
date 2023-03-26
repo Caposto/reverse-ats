@@ -24,7 +24,7 @@ function Keyword({ keywords, removeKeyword, updateKeyword }) {
 
   return keywords.map((keyword) => (
     <div
-      className="flex justify-between items-center m-2 p-4 bg-green-300"
+      className="flex justify-between items-center m-2 p-4 bg-blue-300"
       key={keyword.id}
     >
       {keyword.text}

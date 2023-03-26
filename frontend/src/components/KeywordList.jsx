@@ -43,7 +43,7 @@ function KeywordList({ initial }) {
   };
 
   return (
-    <div>
+    <div className="border-solid border-2 border-sky-500 p-4">
       <KeywordForm onSubmit={addKeyword} />
       <Keyword
         keywords={keywords}
