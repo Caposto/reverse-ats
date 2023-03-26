@@ -25,7 +25,7 @@ function KeywordForm({ edit, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="keyword-form">
+    <form onSubmit={handleSubmit} className="mb-4">
       {edit ? (
         <>
           <input

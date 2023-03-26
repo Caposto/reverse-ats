@@ -24,10 +24,10 @@ function Keyword({ keywords, removeKeyword, updateKeyword }) {
 
   return keywords.map((keyword) => (
     <div
-      className={keyword.isComplete ? "keyword-row complete" : "keyword-row"}
+      className="flex justify-between items-center m-2 p-4 bg-green-300"
       key={keyword.id}
     >
-      <div key={keyword.id}>{keyword.text}</div>
+      {keyword.text}
       <div className="flex justify-center cursor-pointer text-2xl">
         <RiCloseCircleLine onClick={() => removeKeyword(keyword.id)} />
         <TiEdit onClick={() => setEdit({ id: keyword.id, value: keyword.text })} />
@@ -41,7 +41,6 @@ Keyword.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
-      isCompleted: PropTypes.bool.isRequired,
     })
   ).isRequired,
   removeKeyword: PropTypes.func.isRequired,
