@@ -18,10 +18,11 @@ function KeywordList({ initial }) {
   }, []); // Fixed issue where useEffect prevented editing by chaning [keywords] to [] for 2nd arg
 
   const addKeyword = (keyword) => {
+    // Checks if string is empty or if the string contains only whitespace characters
     if (!keyword.text || /^\s*$/.test(keyword.text)) {
       return;
     }
-    const newKeywords = [keyword, ...keywords];
+    const newKeywords = [keyword, ...keywords]; // "..." is called spread operator: spreads iterable into individual elements
     setKeywords(newKeywords);
   };
 

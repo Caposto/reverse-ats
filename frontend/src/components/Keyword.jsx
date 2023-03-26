@@ -40,15 +40,9 @@ function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
       >
         {keyword.text}
       </div>
-      <div className="icons">
-        <RiCloseCircleLine
-          onClick={() => removeKeyword(keyword.id)}
-          className="delete-icon"
-        />
-        <TiEdit
-          onClick={() => setEdit({ id: keyword.id, value: keyword.text })}
-          className="edit-icon"
-        />
+      <div className="flex justify-center cursor-pointer text-2xl">
+        <RiCloseCircleLine onClick={() => removeKeyword(keyword.id)} />
+        <TiEdit onClick={() => setEdit({ id: keyword.id, value: keyword.text })} />
       </div>
     </div>
   ));
