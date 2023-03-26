@@ -25,7 +25,7 @@ function KeywordForm({ edit, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="keyword-form">
+    <form onSubmit={handleSubmit} className="mb-4">
       {edit ? (
         <>
           <input
@@ -34,9 +34,13 @@ function KeywordForm({ edit, onSubmit }) {
             onChange={handleChange}
             name="text"
             ref={inputRef}
-            className="keyword-input edit"
+            className="p-6 border-solid border-4"
           />
-          <button type="submit" onClick={handleSubmit} className="keyword-button edit">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="p-6 border-solid border-4 cursor-pointer bg-purple-100"
+          >
             Update
           </button>
         </>
@@ -47,10 +51,14 @@ function KeywordForm({ edit, onSubmit }) {
             value={input}
             onChange={handleChange}
             name="text"
-            className="keyword-input"
+            className="p-6 border-solid border-4"
             ref={inputRef}
           />
-          <button type="submit" onClick={handleSubmit} className="keyword-button">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="p-6 border-solid border-4 cursor-pointer bg-purple-300"
+          >
             Add keyword
           </button>
         </>

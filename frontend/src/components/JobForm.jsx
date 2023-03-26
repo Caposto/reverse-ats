@@ -28,16 +28,20 @@ function JobForm() {
   };
 
   return (
-    <div id="standard-form">
+    <div className="p-8">
       <form onSubmit={handleSubmit}>
-        <input
+        <textarea
           placeholder="Enter Job Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          rows="6"
+          className="block px-4 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
         />
-        <button className="text-2xl" type="submit">
-          {loading ? <>Loading..</> : <>Search</>}
-        </button>
+        <div className="py-4">
+          <button className="text-xl p-2 rounded-md border border-2" type="submit">
+            {loading ? <>Loading..</> : <>Submit</>}
+          </button>
+        </div>
       </form>
       {!visible && !error && (
         <div>

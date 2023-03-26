@@ -1,15 +1,7 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import EntryForm from "./components/Home";
-import NotFound from "./components/NotFound";
+import JobForm from "./components/JobForm";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<EntryForm />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+  return <JobForm />;
 }
 
 export default App;

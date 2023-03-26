@@ -4,7 +4,7 @@ import { TiEdit } from "react-icons/ti";
 import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 
-function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
+function Keyword({ keywords, removeKeyword, updateKeyword, color }) {
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -24,31 +24,13 @@ function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
 
   return keywords.map((keyword) => (
     <div
-      className={keyword.isComplete ? "keyword-row complete" : "keyword-row"}
+      className={`flex justify-between items-center m-2 p-4 ${color}`}
       key={keyword.id}
     >
-      <div
-        key={keyword.id}
-        onClick={() => completeKeyword(keyword.id)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            completeKeyword(keyword.id);
-          }
-        }}
-        role="button"
-        tabIndex={0}
-      >
-        {keyword.text}
-      </div>
-      <div className="icons">
-        <RiCloseCircleLine
-          onClick={() => removeKeyword(keyword.id)}
-          className="delete-icon"
-        />
-        <TiEdit
-          onClick={() => setEdit({ id: keyword.id, value: keyword.text })}
-          className="edit-icon"
-        />
+      {keyword.text}
+      <div className="flex justify-center cursor-pointer text-2xl">
+        <RiCloseCircleLine onClick={() => removeKeyword(keyword.id)} />
+        <TiEdit onClick={() => setEdit({ id: keyword.id, value: keyword.text })} />
       </div>
     </div>
   ));
@@ -59,12 +41,15 @@ Keyword.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
-      isCompleted: PropTypes.bool.isRequired,
     })
   ).isRequired,
-  completeKeyword: PropTypes.func.isRequired,
   removeKeyword: PropTypes.func.isRequired,
   updateKeyword: PropTypes.func.isRequired,
+  color: PropTypes.string,
+};
+
+Keyword.defaultProps = {
+  color: "bg-blue-300",
 };
 
 export default Keyword;
