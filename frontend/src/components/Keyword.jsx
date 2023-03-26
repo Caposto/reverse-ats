@@ -4,7 +4,7 @@ import { TiEdit } from "react-icons/ti";
 import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 
-function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
+function Keyword({ keywords, removeKeyword, updateKeyword }) {
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -27,19 +27,7 @@ function Keyword({ keywords, completeKeyword, removeKeyword, updateKeyword }) {
       className={keyword.isComplete ? "keyword-row complete" : "keyword-row"}
       key={keyword.id}
     >
-      <div
-        key={keyword.id}
-        onClick={() => completeKeyword(keyword.id)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            completeKeyword(keyword.id);
-          }
-        }}
-        role="button"
-        tabIndex={0}
-      >
-        {keyword.text}
-      </div>
+      <div key={keyword.id}>{keyword.text}</div>
       <div className="flex justify-center cursor-pointer text-2xl">
         <RiCloseCircleLine onClick={() => removeKeyword(keyword.id)} />
         <TiEdit onClick={() => setEdit({ id: keyword.id, value: keyword.text })} />
@@ -56,7 +44,6 @@ Keyword.propTypes = {
       isCompleted: PropTypes.bool.isRequired,
     })
   ).isRequired,
-  completeKeyword: PropTypes.func.isRequired,
   removeKeyword: PropTypes.func.isRequired,
   updateKeyword: PropTypes.func.isRequired,
 };

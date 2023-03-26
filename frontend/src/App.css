@@ -23,17 +23,6 @@ body {
   padding-bottom: 32px;
 }
 
-h1 {
-  margin: 32px 0;
-  color: #fff;
-  font-size: 24px;
-}
-
-.complete {
-  text-decoration: line-through;
-  opacity: 0.4;
-}
-
 .keyword-form {
   margin-bottom: 32px;
 }

@@ -42,19 +42,11 @@ function KeywordList({ initial }) {
     setKeywords(removedArr);
   };
 
-  const completeKeyword = (keywordId) => {
-    const updatedKeywords = keywords.map((keyword) =>
-      keyword.id === keywordId ? { ...keyword, isComplete: !keyword.isComplete } : keyword
-    );
-    setKeywords(updatedKeywords);
-  };
-
   return (
     <div>
       <KeywordForm onSubmit={addKeyword} />
       <Keyword
         keywords={keywords}
-        completeKeyword={completeKeyword}
         removeKeyword={removeKeyword}
         updateKeyword={updateKeyword}
       />
