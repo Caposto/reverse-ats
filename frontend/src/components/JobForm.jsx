@@ -8,7 +8,10 @@ function JobForm() {
   const [visible, setVisibility] = useState(true);
   const [loading, setLoading] = useState(false);
   const [keywords, setKeywords] = useState([]);
+  const [count, setCount] = useState(0);
   const [error, setError] = useState(false);
+
+  const maxJobDescriptionLength = 10000;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,11 +33,18 @@ function JobForm() {
   return (
     <div className="p-8">
       <form onSubmit={handleSubmit}>
+        <div className="py-2">
+          Character Limit: {count}/{maxJobDescriptionLength}
+        </div>
         <textarea
           placeholder="Enter Job Description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => {
+            setDescription(e.target.value);
+            setCount(e.target.value.length);
+          }}
           rows="6"
+          maxLength={maxJobDescriptionLength}
           className="block px-4 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
         />
         <div className="py-4">
