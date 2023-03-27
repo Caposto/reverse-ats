@@ -15,7 +15,7 @@ function KeywordList({ initial }) {
         isComplete: false,
       }))
     );
-  }, []); // Fixed issue where useEffect prevented editing by chaning [keywords] to [] for 2nd arg
+  }); // Fixed issue where useEffect prevented editing by chaning [keywords] to [] for 2nd arg
 
   const addKeyword = (keyword) => {
     // Checks if string is empty or if the string contains only whitespace characters
