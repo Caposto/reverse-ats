@@ -11,31 +11,33 @@ function JobForm() {
   const [count, setCount] = useState(0);
   const [error, setError] = useState(false);
 
-  const maxJobDescriptionLength = 10000;
+  const maxJobDescriptionLength = 5000;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      setLoading(true);
-      const apiKeywords = await getKeywordsFromFlask(description);
-      setKeywords(apiKeywords);
-      setDescription("");
-      setVisibility(false);
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      // eslint-disable-next-line no-console
-      console.log(err);
-      setError(true);
+    // FIXME: Handle all whitespace submissions
+    if (description === "") {
+      alert("No Empty Job Descriptions Allowed!");
+    } else {
+      try {
+        setLoading(true);
+        const apiKeywords = await getKeywordsFromFlask(description);
+        setKeywords(apiKeywords);
+        setDescription("");
+        setVisibility(false);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        // eslint-disable-next-line no-console
+        console.log(err);
+        setError(true);
+      }
     }
   };
 
   return (
     <div className="p-8">
       <form onSubmit={handleSubmit}>
-        <div className="py-2">
-          Character Limit: {count}/{maxJobDescriptionLength}
-        </div>
         <textarea
           placeholder="Enter Job Description"
           value={description}
@@ -47,6 +49,9 @@ function JobForm() {
           maxLength={maxJobDescriptionLength}
           className="block px-4 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
         />
+        <div className="pt-2">
+          Character Limit: {count}/{maxJobDescriptionLength}
+        </div>
         <div className="py-4">
           <button className="text-xl p-2 rounded-md border border-2" type="submit">
             {loading ? <>Loading..</> : <>Submit</>}
