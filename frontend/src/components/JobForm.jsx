@@ -19,6 +19,8 @@ function JobForm() {
     // Handle empty string and whitespace submissions
     if (description.trim().length === 0) {
       setException(true);
+      setDescription("");
+      setCount(0);
     } else {
       try {
         setException(false);
@@ -61,9 +63,16 @@ function JobForm() {
           </button>
         </div>
       </form>
-      {!visible && !error && (
+      {!visible && !error && !exception && (
         <div>
           <KeywordList initial={keywords} />
+          <button
+            className="text-xl p-2 rounded-md border border-2"
+            type="submit"
+            onClick={() => window.location.reload()}
+          >
+            Submit New Description
+          </button>
         </div>
       )}
       {error && <Error />}
