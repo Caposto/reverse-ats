@@ -10,20 +10,23 @@ function JobForm() {
   const [keywords, setKeywords] = useState([]);
   const [count, setCount] = useState(0);
   const [error, setError] = useState(false);
+  const [exception, setException] = useState(false);
 
   const maxJobDescriptionLength = 5000;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // FIXME: Handle all whitespace submissions
-    if (description === "") {
-      alert("No Empty Job Descriptions Allowed!");
+    // Handle empty string and whitespace submissions
+    if (description.trim().length === 0) {
+      setException(true);
     } else {
       try {
+        setException(false);
         setLoading(true);
         const apiKeywords = await getKeywordsFromFlask(description);
         setKeywords(apiKeywords);
         setDescription("");
+        setCount(0);
         setVisibility(false);
         setLoading(false);
       } catch (err) {
@@ -64,6 +67,7 @@ function JobForm() {
         </div>
       )}
       {error && <Error />}
+      {exception && <Error errorMessage="No empty submissions allowed!" />}
     </div>
   );
 }
