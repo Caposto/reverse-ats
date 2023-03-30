@@ -69,7 +69,7 @@ function JobForm() {
           <button
             className="text-xl p-2 rounded-md border border-2"
             type="submit"
-            onClick={() => window.location.reload()}
+            onClick={() => window.location.reload()} // FIXME: Is there a way to reload just the component instead of whole page?
           >
             Submit New Description
           </button>
