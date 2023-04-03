@@ -1,24 +1,56 @@
-import renderer from "react-test-renderer";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import JobForm from "../components/JobForm";
+import getKeywordsFromFlask from "../services/User";
 
-it("changes the class when hovered", () => {
-  const component = renderer.create(<JobForm />);
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+jest.mock("../services/User");
 
-  // manually trigger the callback
-  renderer.act(() => {
-    tree.props.onMouseEnter();
+const mockGetKeywordsFromFlask = getKeywordsFromFlask;
+
+describe("JobForm", () => {
+  test("renders JobForm component", () => {
+    render(<JobForm />);
+    expect(screen.getByPlaceholderText("Enter Job Description")).toBeInTheDocument();
   });
-  // re-rendering
-  tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
 
-  // manually trigger the callback
-  renderer.act(() => {
-    tree.props.onMouseLeave();
+  test("handles empty submission", async () => {
+    render(<JobForm />);
+    userEvent.click(screen.getByText("Submit"));
+    await waitFor(() => {
+      expect(screen.getByText("No empty submissions allowed!")).toBeInTheDocument();
+    });
   });
-  // re-rendering
-  tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+
+  test("handles valid submission", async () => {
+    const mockKeywords = ["keyword1", "keyword2", "keyword3"];
+    mockGetKeywordsFromFlask.mockResolvedValueOnce(mockKeywords);
+
+    render(<JobForm />);
+    const descriptionInput = screen.getByPlaceholderText("Enter Job Description");
+    userEvent.type(descriptionInput, "Sample job description");
+    userEvent.click(screen.getByText("Submit"));
+
+    await waitFor(() => {
+      expect(mockGetKeywordsFromFlask).toHaveBeenCalledTimes(1);
+      expect(mockGetKeywordsFromFlask).toHaveBeenCalledWith("Sample job description");
+      expect(screen.getByText("Submit New Description")).toBeInTheDocument();
+    });
+  });
+
+  test("handles API error", async () => {
+    mockGetKeywordsFromFlask.mockRejectedValueOnce(new Error("API error"));
+
+    render(<JobForm />);
+    const descriptionInput = screen.getByPlaceholderText("Enter Job Description");
+    userEvent.type(descriptionInput, "Sample job description");
+    userEvent.click(screen.getByText("Submit"));
+
+    await waitFor(() => {
+      expect(mockGetKeywordsFromFlask).toHaveBeenCalledTimes(1);
+      expect(mockGetKeywordsFromFlask).toHaveBeenCalledWith("Sample job description");
+      expect(
+        screen.getByText("Something went wrong. Please try again later.")
+      ).toBeInTheDocument();
+    });
+  });
 });
