@@ -44,6 +44,7 @@ function JobForm() {
     <div className="p-8">
       <form onSubmit={handleSubmit}>
         <textarea
+          aria-label="Job Description Submission"
           placeholder="Enter Job Description"
           value={description}
           onChange={(e) => {
