@@ -41,7 +41,7 @@ function JobForm() {
   };
 
   return (
-    <div className="p-8">
+    <div aria-label="form-test-id" className="p-8">
       <form onSubmit={handleSubmit}>
         <textarea
           aria-label="Job Description Submission"
@@ -59,7 +59,11 @@ function JobForm() {
           Character Limit: {count}/{maxJobDescriptionLength}
         </div>
         <div className="py-4">
-          <button className="text-xl p-2 rounded-md border border-2" type="submit">
+          <button
+            className="text-xl p-2 rounded-md border border-2"
+            type="submit"
+            aria-label="Submit Button"
+          >
             {loading ? <>Loading..</> : <>Submit</>}
           </button>
         </div>
