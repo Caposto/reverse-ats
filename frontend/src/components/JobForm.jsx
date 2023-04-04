@@ -62,7 +62,7 @@ function JobForm() {
           <button
             className="text-xl p-2 rounded-md border border-2"
             type="submit"
-            aria-label="Submit Button"
+            aria-label="submit-button"
           >
             {loading ? <>Loading..</> : <>Submit</>}
           </button>

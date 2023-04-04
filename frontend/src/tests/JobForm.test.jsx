@@ -1,6 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import JobForm from "../components/JobForm";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("JobForm", () => {
   test("render empty component", () => {
@@ -14,13 +15,8 @@ describe("JobForm", () => {
 
   test("handles empty submission and sets exception prop to true", async () => {
     render(<JobForm />);
-
-    const submitButton = screen.getByLabelText("Submit Button");
-    userEvent.click(submitButton);
-
-    await waitFor(() => {
-      const jobFormInstance = screen.getByLabelText("form-test-id").parentNode;
-      expect(jobFormInstance.props.exception).toBe(true);
-    });
+    await userEvent.click(screen.getByLabelText("submit-button"));
+    const form = screen.getByLabelText("form-test-id");
+    expect(form).toHaveTextContent("No empty submissions allowed!");
   });
 });
