@@ -1,7 +1,11 @@
 import JobForm from "./components/JobForm";
 
 function App() {
-  return <JobForm />;
+  return (
+    <div>
+      <JobForm />
+    </div>
+  );
 }
 
 export default App;
