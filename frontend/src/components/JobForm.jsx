@@ -35,16 +35,16 @@ function JobForm() {
         setSubmitted(true);
       } catch (err) {
         setLoading(false);
-        // eslint-disable-next-line no-console
-        console.log(err);
         setError(true);
       }
     }
   };
 
+  // Show new form without reloading window
   const submitNewDescription = () => {
+    setKeywords([]);
+    setVisibility(true);
     setSubmitted(false);
-    window.location.reload();
   };
 
   return (
