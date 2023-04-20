@@ -91,7 +91,9 @@ function JobForm() {
         </div>
       )}
       {error && <Error />}
-      {exception && <Error errorMessage="No empty submissions allowed!" />}
+      {exception && (
+        <Error errorMessage="No empty submissions allowed! Please try again." />
+      )}
     </div>
   );
 }
