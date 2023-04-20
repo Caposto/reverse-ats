@@ -2,8 +2,9 @@ import JobForm from "./components/JobForm";
 
 function App() {
   return (
-    <div>
-      <JobForm />
+    <div className="flex">
+      <JobForm className="grow" />
+      <JobForm className="grow" />
     </div>
   );
 }
