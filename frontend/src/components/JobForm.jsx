@@ -48,12 +48,12 @@ function JobForm() {
   };
 
   return (
-    <div aria-label="form-test-id" className="p-8">
+    <div aria-label="form-test-id" className="px-8">
       {!submitted && (
         <form onSubmit={handleSubmit}>
           <textarea
             aria-label="Job Description Submission"
-            placeholder="Enter Job Description"
+            placeholder="Enter Text"
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);
@@ -72,7 +72,7 @@ function JobForm() {
               type="submit"
               aria-label="Submit Button"
             >
-              Submit
+              Extract
             </button>
           </div>
         </form>
