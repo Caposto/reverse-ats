@@ -2,9 +2,6 @@ import PyPDF2
 import spacy
 import re
 
-# Minimum Goal From Sample Description
-# HTML5, CSS, JavaScript, C++, JQuery, Java, Python, Rails, Ruby, .NET, PHP, SQL
-
 #################################################SPACY##############################################################
 
 # FIXME: What is the output? A string?
@@ -24,6 +21,7 @@ def extract_keywords_md(description: str) -> list[str]:
     doc = nlp(description)
     keyword_list = [word.text for word in doc.ents] # Get each keyword as a string
     filtered_keyword_list = [w for w in keyword_list if " " not in w]
+    filtered_keyword_list = [*set(filtered_keyword_list)] # Remove duplicates using a hash set
     return filtered_keyword_list
 
 def extract_re(description: str) -> list[str]:
