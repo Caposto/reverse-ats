@@ -6,7 +6,7 @@ import Keyword from "./Keyword";
 function KeywordList({ initial }) {
   const [keywords, setKeywords] = useState([]);
 
-  // Update KeywordList2 with the result of the API call
+  // Intialize the keyword list with the result of the API Call
   useEffect(() => {
     setKeywords(
       initial.map((keyword, index) => ({

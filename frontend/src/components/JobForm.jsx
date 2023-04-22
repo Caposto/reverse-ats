@@ -40,7 +40,6 @@ function JobForm() {
     }
   };
 
-  // Show new form without reloading window
   const submitNewDescription = () => {
     setKeywords([]);
     setVisibility(true);

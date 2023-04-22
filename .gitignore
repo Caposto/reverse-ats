@@ -7,3 +7,5 @@
 /.env
 
 .flaskenv
+
+.vscode
