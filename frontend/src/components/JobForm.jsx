@@ -27,7 +27,15 @@ function JobForm({ updateParentKeywords }) {
       try {
         setException(false);
         setLoading(true);
+
+        // Ensure consitency of keyword list when comparing
         const apiKeywords = await getKeywordsFromFlask(description);
+        apiKeywords.map((keyword, index) => ({
+          id: index + 1,
+          text: keyword,
+          isComplete: false,
+        }));
+
         setKeywords(apiKeywords);
         updateParentKeywords(apiKeywords); // update keywords in parent component
         setDescription("");
