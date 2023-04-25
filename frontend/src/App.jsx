@@ -24,11 +24,11 @@ function App() {
     <div className="flex">
       <div>
         <h1 className="text-xl text-center">Job Description</h1>
-        <JobForm className="grow" onKeywordsChange={handleJobKeywords} />
+        <JobForm className="grow" updateParentKeywords={handleJobKeywords} />
       </div>
       <div>
         <h1 className="text-xl text-center">Resume</h1>
-        <JobForm className="grow" onKeywordsChange={handleResumeKeywords} />
+        <JobForm className="grow" updateParentKeywords={handleResumeKeywords} />
       </div>
       <div>
         <button

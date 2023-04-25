@@ -4,7 +4,7 @@ import KeywordList from "./KeywordList";
 import Error from "./Error";
 import getKeywordsFromFlask from "../services/User";
 
-function JobForm({ onKeywordsChange }) {
+function JobForm({ updateParentKeywords }) {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ function JobForm({ onKeywordsChange }) {
         setLoading(true);
         const apiKeywords = await getKeywordsFromFlask(description);
         setKeywords(apiKeywords);
-        onKeywordsChange(apiKeywords); // update keywords in parent component
+        updateParentKeywords(apiKeywords); // update keywords in parent component
         setDescription("");
         setCount(0);
         setVisibility(false);
@@ -46,6 +46,7 @@ function JobForm({ onKeywordsChange }) {
     setKeywords([]);
     setVisibility(true);
     setSubmitted(false);
+    updateParentKeywords([]);
   };
 
   return (
@@ -81,7 +82,7 @@ function JobForm({ onKeywordsChange }) {
       <div className="text-xl"> {loading ? <>Loading...</> : ""} </div>
       {!visible && !error && !exception && (
         <div>
-          <KeywordList initial={keywords} />
+          <KeywordList initial={keywords} updateParentKeywords={updateParentKeywords} />
           <button
             className="text-xl p-2 rounded-md border border-2"
             type="submit"
@@ -100,7 +101,7 @@ function JobForm({ onKeywordsChange }) {
 }
 
 JobForm.propTypes = {
-  onKeywordsChange: PropTypes.func.isRequired,
+  updateParentKeywords: PropTypes.func.isRequired,
 };
 
 export default JobForm;
