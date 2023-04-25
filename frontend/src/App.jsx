@@ -7,10 +7,12 @@ function App() {
 
   const handleJobKeywords = (keywords) => {
     setJobKeywords(keywords);
+    console.log("updated job keywords");
   };
 
   const handleResumeKeywords = (keywords) => {
     setResumeKeywords(keywords);
+    console.log("updated resume keywords");
   };
 
   const compareKeywords = () => {

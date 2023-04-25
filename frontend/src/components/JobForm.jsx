@@ -1,9 +1,10 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import KeywordList from "./KeywordList";
 import Error from "./Error";
 import getKeywordsFromFlask from "../services/User";
 
-function JobForm() {
+function JobForm({ onKeywordsChange }) {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -28,6 +29,7 @@ function JobForm() {
         setLoading(true);
         const apiKeywords = await getKeywordsFromFlask(description);
         setKeywords(apiKeywords);
+        onKeywordsChange(apiKeywords); // update keywords in parent component
         setDescription("");
         setCount(0);
         setVisibility(false);
@@ -96,5 +98,9 @@ function JobForm() {
     </div>
   );
 }
+
+JobForm.propTypes = {
+  onKeywordsChange: PropTypes.func.isRequired,
+};
 
 export default JobForm;
