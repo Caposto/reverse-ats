@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import JobForm from "./components/JobForm";
 import KeywordsContext from "./services/KeywordContext";
 
@@ -8,29 +8,27 @@ function App() {
 
   const handleJobKeywords = (keywords) => {
     setJobKeywords(keywords);
-    console.log("updated job keywords");
   };
 
   const handleResumeKeywords = (keywords) => {
     setResumeKeywords(keywords);
-    console.log("updated resume keywords");
   };
 
   const compareKeywords = () => {
+    // TODO: Implement Keyword Comparison algorithm
     console.log(jobKeywords);
     console.log(resumeKeywords);
   };
 
+  // Handles Error: changes every render
+  const keywordsContextValue = useMemo(() => ({
+    handleJobKeywords,
+    handleResumeKeywords,
+  }));
+
   return (
     <div className="flex">
-      <KeywordsContext.Provider
-        // FIXME: implement useMemo
-        // eslint-disable-next-line react/jsx-no-constructed-context-values
-        value={{
-          handleJobKeywords,
-          handleResumeKeywords,
-        }}
-      >
+      <KeywordsContext.Provider value={keywordsContextValue}>
         <div>
           <h1 className="text-xl text-center">Job Description</h1>
           <JobForm className="grow" descriptionType="job" />
