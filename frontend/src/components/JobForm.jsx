@@ -100,7 +100,7 @@ function JobForm({ descriptionType }) {
       <div className="text-xl"> {loading ? <>Loading...</> : ""} </div>
       {!visible && !error && !exception && (
         <div>
-          <KeywordList initial={keywords} />
+          <KeywordList initial={keywords} descriptionType={descriptionType} />
           <button
             className="text-xl p-2 rounded-md border border-2"
             type="submit"

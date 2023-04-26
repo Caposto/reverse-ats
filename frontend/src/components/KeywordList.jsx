@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 import Keyword from "./Keyword";
+import KeywordsContext from "../services/KeywordContext";
 
-function KeywordList({ initial }) {
+function KeywordList({ initial, descriptionType }) {
   const [keywords, setKeywords] = useState([]);
+
+  const { handleJobKeywords, handleResumeKeywords } = useContext(KeywordsContext);
 
   // Intialize the keyword list with the result of the API Call
   useEffect(() => {
@@ -16,6 +19,16 @@ function KeywordList({ initial }) {
       }))
     );
   }, []);
+
+  // Update Parent Keywords
+  useEffect(() => {
+    // Call the appropriate function based on descriptionType
+    if (descriptionType === "job") {
+      handleJobKeywords(keywords);
+    } else if (descriptionType === "resume") {
+      handleResumeKeywords(keywords);
+    }
+  }, [keywords]);
 
   const addKeyword = (keyword) => {
     // Checks if string is empty or if the string contains only whitespace characters
@@ -56,6 +69,7 @@ function KeywordList({ initial }) {
 
 KeywordList.propTypes = {
   initial: PropTypes.arrayOf(PropTypes.string),
+  descriptionType: PropTypes.string.isRequired,
 };
 
 KeywordList.defaultProps = {
