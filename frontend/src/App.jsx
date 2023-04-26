@@ -1,5 +1,6 @@
 import { useState } from "react";
 import JobForm from "./components/JobForm";
+import KeywordsContext from "./services/KeywordContext";
 
 function App() {
   const [jobKeywords, setJobKeywords] = useState([]);
@@ -22,23 +23,32 @@ function App() {
 
   return (
     <div className="flex">
-      <div>
-        <h1 className="text-xl text-center">Job Description</h1>
-        <JobForm className="grow" updateParentKeywords={handleJobKeywords} />
-      </div>
-      <div>
-        <h1 className="text-xl text-center">Resume</h1>
-        <JobForm className="grow" updateParentKeywords={handleResumeKeywords} />
-      </div>
-      <div>
-        <button
-          type="submit"
-          onClick={compareKeywords}
-          className="text-xl p-2 rounded-md border border-2"
-        >
-          Compare
-        </button>
-      </div>
+      <KeywordsContext.Provider
+        // FIXME: implement useMemo
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
+        value={{
+          handleJobKeywords,
+          handleResumeKeywords,
+        }}
+      >
+        <div>
+          <h1 className="text-xl text-center">Job Description</h1>
+          <JobForm className="grow" descriptionType="job" />
+        </div>
+        <div>
+          <h1 className="text-xl text-center">Resume</h1>
+          <JobForm className="grow" descriptionType="resume" />
+        </div>
+        <div>
+          <button
+            type="submit"
+            onClick={compareKeywords}
+            className="text-xl p-2 rounded-md border border-2"
+          >
+            Compare
+          </button>
+        </div>
+      </KeywordsContext.Provider>
     </div>
   );
 }

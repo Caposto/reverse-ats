@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import KeywordList from "./KeywordList";
 import Error from "./Error";
 import getKeywordsFromFlask from "../services/User";
+import KeywordsContext from "../services/KeywordContext";
 
-function JobForm({ updateParentKeywords }) {
+function JobForm({ descriptionType }) {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -13,6 +14,8 @@ function JobForm({ updateParentKeywords }) {
   const [error, setError] = useState(false);
   const [exception, setException] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const { handleJobKeywords, handleResumeKeywords } = useContext(KeywordsContext);
 
   const maxJobDescriptionLength = 5000;
 
@@ -30,14 +33,21 @@ function JobForm({ updateParentKeywords }) {
 
         // Ensure consitency of keyword list when comparing
         const apiKeywords = await getKeywordsFromFlask(description);
-        apiKeywords.map((keyword, index) => ({
+        const formattedKeywords = apiKeywords.map((keyword, index) => ({
           id: index + 1,
           text: keyword,
           isComplete: false,
         }));
 
         setKeywords(apiKeywords);
-        updateParentKeywords(apiKeywords); // update keywords in parent component
+
+        // Update parent keywords with useContext
+        if (descriptionType === "job") {
+          handleJobKeywords(formattedKeywords);
+        } else if (descriptionType === "resume") {
+          handleResumeKeywords(formattedKeywords);
+        }
+
         setDescription("");
         setCount(0);
         setVisibility(false);
@@ -54,7 +64,7 @@ function JobForm({ updateParentKeywords }) {
     setKeywords([]);
     setVisibility(true);
     setSubmitted(false);
-    updateParentKeywords([]);
+    // updateParentKeywords([]);
   };
 
   return (
@@ -90,7 +100,7 @@ function JobForm({ updateParentKeywords }) {
       <div className="text-xl"> {loading ? <>Loading...</> : ""} </div>
       {!visible && !error && !exception && (
         <div>
-          <KeywordList initial={keywords} updateParentKeywords={updateParentKeywords} />
+          <KeywordList initial={keywords} />
           <button
             className="text-xl p-2 rounded-md border border-2"
             type="submit"
@@ -109,7 +119,7 @@ function JobForm({ updateParentKeywords }) {
 }
 
 JobForm.propTypes = {
-  updateParentKeywords: PropTypes.func.isRequired,
+  descriptionType: PropTypes.string.isRequired,
 };
 
 export default JobForm;

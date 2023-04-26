@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 import Keyword from "./Keyword";
 
-function KeywordList({ initial, updateParentKeywords }) {
+function KeywordList({ initial }) {
   const [keywords, setKeywords] = useState([]);
 
   // Intialize the keyword list with the result of the API Call
@@ -24,7 +24,6 @@ function KeywordList({ initial, updateParentKeywords }) {
     }
     const newKeywords = [keyword, ...keywords]; // "..." is called spread operator: spreads iterable into individual elements
     setKeywords(newKeywords);
-    updateParentKeywords(newKeywords);
   };
 
   const updateKeyword = (keywordId, newValue) => {
@@ -36,17 +35,11 @@ function KeywordList({ initial, updateParentKeywords }) {
         keyword.id === keywordId ? { ...keyword, ...newValue } : keyword
       )
     );
-    updateParentKeywords((prevKeywords) =>
-      prevKeywords.map((keyword) =>
-        keyword.id === keywordId ? { ...keyword, ...newValue } : keyword
-      )
-    );
   };
 
   const removeKeyword = (keywordId) => {
     const removedArr = keywords.filter((keyword) => keyword.id !== keywordId);
     setKeywords(removedArr);
-    updateParentKeywords(removedArr);
   };
 
   return (
@@ -63,7 +56,6 @@ function KeywordList({ initial, updateParentKeywords }) {
 
 KeywordList.propTypes = {
   initial: PropTypes.arrayOf(PropTypes.string),
-  updateParentKeywords: PropTypes.func.isRequired,
 };
 
 KeywordList.defaultProps = {
