@@ -10,5 +10,5 @@ def get_keywords():
     job_description = request.get_json();
     job_description_text = job_description['description'] # Access Job Description Field in request
     keywords = extract_keywords_md(job_description_text) # list/array : extraction.py
-    print(keywords)
+    # print(keywords)
     return jsonify(keywords)
