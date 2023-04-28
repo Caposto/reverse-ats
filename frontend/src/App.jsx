@@ -6,6 +6,8 @@ function App() {
   const [jobKeywords, setJobKeywords] = useState([]);
   const [resumeKeywords, setResumeKeywords] = useState([]);
 
+  const commonWords = new Set();
+
   const handleJobKeywords = (keywords) => {
     setJobKeywords(keywords);
   };
@@ -18,6 +20,17 @@ function App() {
     // TODO: Implement Keyword Comparison algorithm
     console.log(jobKeywords);
     console.log(resumeKeywords);
+
+    // Brute Force:
+    Object.values(jobKeywords).forEach((k) =>
+      Object.values(resumeKeywords).forEach((jk) => {
+        if (k.text === jk.text) {
+          commonWords.add(k.text);
+        }
+      })
+    );
+
+    console.log(commonWords);
   };
 
   // Handles Error: changes every render
