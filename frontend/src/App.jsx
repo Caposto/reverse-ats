@@ -1,10 +1,15 @@
 import { useState, useMemo } from "react";
-import JobForm from "./components/JobForm";
+import JobForm from "./components/Form";
+import Matches from "./components/Matches";
 import KeywordsContext from "./services/KeywordContext";
 
 function App() {
   const [jobKeywords, setJobKeywords] = useState([]);
   const [resumeKeywords, setResumeKeywords] = useState([]);
+
+  // Used For Comparison
+  const commonKeywords = new Set();
+  const recommendedKeywords = [];
 
   const handleJobKeywords = (keywords) => {
     setJobKeywords(keywords);
@@ -15,10 +20,7 @@ function App() {
   };
 
   const compareKeywords = () => {
-    const resumeTextKeywords = resumeKeywords.map((keyword) => keyword.text);
-    const resumeKeywordsSet = new Set(resumeTextKeywords);
-    const commonKeywords = new Set();
-    const recommendedKeywords = [];
+    const resumeKeywordsSet = new Set(resumeKeywords.map((keyword) => keyword.text));
 
     Object.values(jobKeywords).forEach((jobKeyword) => {
       if (resumeKeywordsSet.has(jobKeyword.text)) {
@@ -26,9 +28,9 @@ function App() {
       }
     });
 
-    Object.values(resumeTextKeywords).forEach((resumeKeyword) => {
-      if (!commonKeywords.has(resumeKeyword)) {
-        recommendedKeywords.push(resumeKeyword);
+    Object.values(resumeKeywords).forEach((resumeKeyword) => {
+      if (!commonKeywords.has(resumeKeyword.text)) {
+        recommendedKeywords.push(resumeKeyword.text);
       }
     });
   };
@@ -60,6 +62,11 @@ function App() {
           </button>
         </div>
       </KeywordsContext.Provider>
+      <Matches
+        commonKeywords={commonKeywords}
+        recommendedKeywords={recommendedKeywords}
+        percentage={100}
+      />
     </div>
   );
 }

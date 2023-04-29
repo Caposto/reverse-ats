@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import KeywordList from "./KeywordList";
 import Error from "./Error";
-import getKeywordsFromFlask from "../services/User";
+import getKeywordsFromFlask from "../services/ApiCall";
 import KeywordsContext from "../services/KeywordContext";
 
 function JobForm({ descriptionType }) {
