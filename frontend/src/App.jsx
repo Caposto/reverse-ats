@@ -6,8 +6,6 @@ function App() {
   const [jobKeywords, setJobKeywords] = useState([]);
   const [resumeKeywords, setResumeKeywords] = useState([]);
 
-  const commonWords = new Set();
-
   const handleJobKeywords = (keywords) => {
     setJobKeywords(keywords);
   };
@@ -17,20 +15,22 @@ function App() {
   };
 
   const compareKeywords = () => {
-    // TODO: Implement Keyword Comparison algorithm
-    console.log(jobKeywords);
-    console.log(resumeKeywords);
+    const resumeTextKeywords = resumeKeywords.map((keyword) => keyword.text);
+    const resumeKeywordsSet = new Set(resumeTextKeywords);
+    const commonKeywords = new Set();
+    const recommendedKeywords = [];
 
-    // Brute Force:
-    Object.values(jobKeywords).forEach((k) =>
-      Object.values(resumeKeywords).forEach((jk) => {
-        if (k.text === jk.text) {
-          commonWords.add(k.text);
-        }
-      })
-    );
+    Object.values(jobKeywords).forEach((jobKeyword) => {
+      if (resumeKeywordsSet.has(jobKeyword.text)) {
+        commonKeywords.add(jobKeyword.text);
+      }
+    });
 
-    console.log(commonWords);
+    Object.values(resumeTextKeywords).forEach((resumeKeyword) => {
+      if (!commonKeywords.has(resumeKeyword)) {
+        recommendedKeywords.push(resumeKeyword);
+      }
+    });
   };
 
   // Handles Error: changes every render
