@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import JobForm from "../components/JobForm";
+import JobForm from "../components/Form";
 import "@testing-library/jest-dom/extend-expect";
 
 describe("JobForm", () => {

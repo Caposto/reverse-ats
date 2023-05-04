@@ -1,4 +1,3 @@
-// Display the matches and recommended additions + percentage of how many keywords you got
 import PropTypes from "prop-types";
 
 function Matches({ commonKeywords, recommendedKeywords, percentage }) {

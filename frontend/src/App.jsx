@@ -6,6 +6,9 @@ import KeywordsContext from "./services/KeywordContext";
 function App() {
   const [jobKeywords, setJobKeywords] = useState([]);
   const [resumeKeywords, setResumeKeywords] = useState([]);
+  const [commonKeywordsState, setCommonKeywordsState] = useState(new Set());
+  const [recommendedKeywordsState, setRecommendedKeywordsState] = useState([]);
+  const [showMatches, setShowMatches] = useState(false);
 
   // Used For Comparison
   const commonKeywords = new Set();
@@ -33,6 +36,12 @@ function App() {
         recommendedKeywords.push(resumeKeyword.text);
       }
     });
+
+    setShowMatches(true);
+    setCommonKeywordsState(commonKeywords);
+    setRecommendedKeywordsState(recommendedKeywords);
+    console.log(commonKeywords);
+    console.log(recommendedKeywords);
   };
 
   // Handles Error: changes every render
@@ -61,12 +70,14 @@ function App() {
             Compare
           </button>
         </div>
+        {showMatches && (
+          <Matches
+            commonKeywords={commonKeywordsState}
+            recommendedKeywords={recommendedKeywordsState}
+            percentage={100}
+          />
+        )}
       </KeywordsContext.Provider>
-      <Matches
-        commonKeywords={commonKeywords}
-        recommendedKeywords={recommendedKeywords}
-        percentage={100}
-      />
     </div>
   );
 }
