@@ -4,7 +4,7 @@ import { TiEdit } from "react-icons/ti";
 import PropTypes from "prop-types";
 import KeywordForm from "./KeywordForm";
 
-function Keyword({ keywords, removeKeyword, updateKeyword, color }) {
+function Keyword({ keywords, removeKeyword, updateKeyword }) {
   const [edit, setEdit] = useState({
     id: null,
     value: "",
@@ -23,10 +23,7 @@ function Keyword({ keywords, removeKeyword, updateKeyword, color }) {
   }
 
   return keywords.map((keyword) => (
-    <div
-      className={`flex justify-between items-center m-2 p-4 ${color}`}
-      key={keyword.id}
-    >
+    <div className="flex justify-between items-center m-2 p-4" key={keyword.id}>
       {keyword.text}
       <div className="flex justify-center cursor-pointer text-2xl">
         <RiCloseCircleLine onClick={() => removeKeyword(keyword.id)} />
@@ -45,11 +42,6 @@ Keyword.propTypes = {
   ).isRequired,
   removeKeyword: PropTypes.func.isRequired,
   updateKeyword: PropTypes.func.isRequired,
-  color: PropTypes.string,
-};
-
-Keyword.defaultProps = {
-  color: "bg-blue-300",
 };
 
 export default Keyword;

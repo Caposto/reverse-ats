@@ -1,10 +1,18 @@
 import { useState, useMemo } from "react";
-import JobForm from "./components/JobForm";
+import JobForm from "./components/Form";
+import Matches from "./components/Matches";
 import KeywordsContext from "./services/KeywordContext";
 
 function App() {
   const [jobKeywords, setJobKeywords] = useState([]);
   const [resumeKeywords, setResumeKeywords] = useState([]);
+  const [commonKeywordsState, setCommonKeywordsState] = useState(new Set());
+  const [recommendedKeywordsState, setRecommendedKeywordsState] = useState([]);
+  const [showMatches, setShowMatches] = useState(false);
+
+  // Used For Comparison
+  const commonKeywords = new Set();
+  const recommendedKeywords = [];
 
   const handleJobKeywords = (keywords) => {
     setJobKeywords(keywords);
@@ -15,9 +23,23 @@ function App() {
   };
 
   const compareKeywords = () => {
-    // TODO: Implement Keyword Comparison algorithm
-    console.log(jobKeywords);
-    console.log(resumeKeywords);
+    const resumeKeywordsSet = new Set(resumeKeywords.map((keyword) => keyword.text));
+
+    Object.values(jobKeywords).forEach((jobKeyword) => {
+      if (resumeKeywordsSet.has(jobKeyword.text)) {
+        commonKeywords.add(jobKeyword.text);
+      }
+    });
+
+    Object.values(resumeKeywords).forEach((resumeKeyword) => {
+      if (!commonKeywords.has(resumeKeyword.text)) {
+        recommendedKeywords.push(resumeKeyword.text);
+      }
+    });
+
+    setShowMatches(true);
+    setCommonKeywordsState(commonKeywords);
+    setRecommendedKeywordsState(recommendedKeywords);
   };
 
   // Handles Error: changes every render
@@ -46,6 +68,13 @@ function App() {
             Compare
           </button>
         </div>
+        {showMatches && (
+          <Matches
+            commonKeywords={commonKeywordsState}
+            recommendedKeywords={recommendedKeywordsState}
+            percentage={100}
+          />
+        )}
       </KeywordsContext.Provider>
     </div>
   );
