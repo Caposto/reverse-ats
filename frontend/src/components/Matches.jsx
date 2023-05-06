@@ -1,10 +1,19 @@
 import PropTypes from "prop-types";
+import Word from "./Word";
 
 function Matches({ commonKeywords, recommendedKeywords, percentage }) {
+  const commonKewywordsList = commonKeywords.map((word) => (
+    <Word key={word.id} wordContent={word} />
+  ));
+
+  const recommendedKewywordsList = recommendedKeywords.map((word) => (
+    <Word key={word.id} wordContent={word} />
+  ));
+
   return (
     <div>
-      <p>{commonKeywords}</p>
-      <p>{recommendedKeywords}</p>
+      {commonKewywordsList}
+      {recommendedKewywordsList}
       <p>{percentage}</p>
     </div>
   );
