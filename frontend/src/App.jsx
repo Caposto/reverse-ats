@@ -40,8 +40,6 @@ function App() {
     setShowMatches(true);
     setCommonKeywordsState(commonKeywords);
     setRecommendedKeywordsState(recommendedKeywords);
-    console.log(commonKeywords);
-    console.log(recommendedKeywords);
   };
 
   // Handles Error: changes every render
