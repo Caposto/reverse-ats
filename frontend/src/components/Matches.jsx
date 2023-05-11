@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Word from "./Word";
+import CircularProgressBar from "./CircularProgressBar";
 
 function Matches({ commonKeywords, recommendedKeywords, percentage }) {
   // FIXME: Is there a better value that can be used for the key?
@@ -15,7 +16,7 @@ function Matches({ commonKeywords, recommendedKeywords, percentage }) {
     <div>
       {commonKeywordsList}
       {recommendedKeywordsList}
-      <p>{percentage}</p>
+      <CircularProgressBar percentage={percentage} />
     </div>
   );
 }
