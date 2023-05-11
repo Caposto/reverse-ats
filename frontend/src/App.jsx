@@ -9,6 +9,7 @@ function App() {
   const [commonKeywordsState, setCommonKeywordsState] = useState(new Set());
   const [recommendedKeywordsState, setRecommendedKeywordsState] = useState([]);
   const [showMatches, setShowMatches] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
   // Used For Comparison
   const commonKeywords = new Set();
@@ -40,6 +41,7 @@ function App() {
     setShowMatches(true);
     setCommonKeywordsState(commonKeywords);
     setRecommendedKeywordsState(recommendedKeywords);
+    setPercentage(Math.floor((commonKeywords.size / resumeKeywords.length) * 100));
   };
 
   // Handles Error: changes every render
@@ -72,7 +74,7 @@ function App() {
           <Matches
             commonKeywords={[...commonKeywordsState]}
             recommendedKeywords={recommendedKeywordsState}
-            percentage={100}
+            percentage={percentage}
           />
         )}
       </KeywordsContext.Provider>
