@@ -70,7 +70,7 @@ function App() {
         </div>
         {showMatches && (
           <Matches
-            commonKeywords={commonKeywordsState}
+            commonKeywords={[...commonKeywordsState]}
             recommendedKeywords={recommendedKeywordsState}
             percentage={100}
           />

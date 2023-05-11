@@ -2,18 +2,19 @@ import PropTypes from "prop-types";
 import Word from "./Word";
 
 function Matches({ commonKeywords, recommendedKeywords, percentage }) {
-  const commonKewywordsList = commonKeywords.map((word) => (
-    <Word key={word.id} wordContent={word} />
+  // FIXME: Is there a better value that can be used for the key?
+  const commonKeywordsList = commonKeywords.map((word) => (
+    <Word key={word} wordContent={word} />
   ));
 
-  const recommendedKewywordsList = recommendedKeywords.map((word) => (
-    <Word key={word.id} wordContent={word} />
+  const recommendedKeywordsList = recommendedKeywords.map((word) => (
+    <Word key={word} wordContent={word} />
   ));
 
   return (
     <div>
-      {commonKewywordsList}
-      {recommendedKewywordsList}
+      {commonKeywordsList}
+      {recommendedKeywordsList}
       <p>{percentage}</p>
     </div>
   );
