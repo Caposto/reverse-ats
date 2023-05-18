@@ -75,11 +75,20 @@ function App() {
           </div>
         )}
         {showMatches && (
-          <Matches
-            commonKeywords={[...commonKeywordsState]}
-            recommendedKeywords={recommendedKeywordsState}
-            percentage={percentage}
-          />
+          <div>
+            <Matches
+              commonKeywords={[...commonKeywordsState]}
+              recommendedKeywords={recommendedKeywordsState}
+              percentage={percentage}
+            />
+            <button
+              type="submit"
+              className="text-xl p-2 rounded-md border border-2"
+              onClick={() => setShowMatches(false)}
+            >
+              Submit New Descriptions
+            </button>
+          </div>
         )}
       </KeywordsContext.Provider>
     </div>
