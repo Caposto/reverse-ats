@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import JobForm from "./components/Form";
+import DynamicForm from "./components/DynamicForm";
 import Matches from "./components/Matches";
 import KeywordsContext from "./services/KeywordContext";
 
@@ -51,10 +51,6 @@ function App() {
   }));
 
   const compareNewDescription = () => {
-    // FIXME: How can I keep the resume keywords in the render?
-    // setResumeKeywords(resumeKeywords);
-    console.log(resumeKeywords);
-    console.log(jobKeywords);
     setCommonKeywordsState(new Set());
     setRecommendedKeywordsState([]);
     setPercentage(0);
@@ -69,11 +65,11 @@ function App() {
             <div className="flex">
               <div>
                 <h1 className="text-xl text-center">Job Description</h1>
-                <JobForm className="grow" descriptionType="job" />
+                <DynamicForm className="grow" descriptionType="job" />
               </div>
               <div>
                 <h1 className="text-xl text-center">Resume</h1>
-                <JobForm className="grow" descriptionType="resume" />
+                <DynamicForm className="grow" descriptionType="resume" />
               </div>
             </div>
             <button

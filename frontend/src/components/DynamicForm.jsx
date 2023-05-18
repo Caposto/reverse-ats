@@ -5,7 +5,7 @@ import Error from "./Error";
 import getKeywordsFromFlask from "../services/ApiCall";
 import KeywordsContext from "../services/KeywordContext";
 
-function JobForm({ descriptionType }) {
+function DynamicForm({ descriptionType }) {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -64,7 +64,6 @@ function JobForm({ descriptionType }) {
     setKeywords([]);
     setVisibility(true);
     setSubmitted(false);
-    // updateParentKeywords([]);
   };
 
   return (
@@ -104,7 +103,7 @@ function JobForm({ descriptionType }) {
           <button
             className="text-xl p-2 rounded-md border border-2"
             type="submit"
-            onClick={submitNewDescription} // FIXME: Is there a way to reload just the component instead of whole page?
+            onClick={submitNewDescription}
           >
             Submit New Description
           </button>
@@ -118,8 +117,8 @@ function JobForm({ descriptionType }) {
   );
 }
 
-JobForm.propTypes = {
+DynamicForm.propTypes = {
   descriptionType: PropTypes.string.isRequired,
 };
 
-export default JobForm;
+export default DynamicForm;
