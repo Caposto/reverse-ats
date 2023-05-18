@@ -50,6 +50,17 @@ function App() {
     handleResumeKeywords,
   }));
 
+  const compareNewDescription = () => {
+    // FIXME: How can I keep the resume keywords in the render?
+    // setResumeKeywords(resumeKeywords);
+    console.log(resumeKeywords);
+    console.log(jobKeywords);
+    setCommonKeywordsState(new Set());
+    setRecommendedKeywordsState([]);
+    setPercentage(0);
+    setShowMatches(false);
+  };
+
   return (
     <div>
       <KeywordsContext.Provider value={keywordsContextValue}>
@@ -84,7 +95,7 @@ function App() {
             <button
               type="submit"
               className="text-xl p-2 rounded-md border border-2"
-              onClick={() => setShowMatches(false)}
+              onClick={compareNewDescription} // FIXME: Are the keywords cleared or just not shown?
             >
               Submit New Descriptions
             </button>
