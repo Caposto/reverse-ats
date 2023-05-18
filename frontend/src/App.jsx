@@ -44,18 +44,19 @@ function App() {
     setShowMatches(true);
   };
 
-  // Handles Error: changes every render
-  const keywordsContextValue = useMemo(() => ({
-    handleJobKeywords,
-    handleResumeKeywords,
-  }));
-
+  // FIXME: How can I presever the resume keyword list
   const compareNewDescription = () => {
     setCommonKeywordsState(new Set());
     setRecommendedKeywordsState([]);
     setPercentage(0);
     setShowMatches(false);
   };
+
+  // Handles Error: changes every render
+  const keywordsContextValue = useMemo(() => ({
+    handleJobKeywords,
+    handleResumeKeywords,
+  }));
 
   return (
     <div>
@@ -91,7 +92,7 @@ function App() {
             <button
               type="submit"
               className="text-xl p-2 rounded-md border border-2"
-              onClick={compareNewDescription} // FIXME: Are the keywords cleared or just not shown?
+              onClick={compareNewDescription}
             >
               Submit New Descriptions
             </button>
