@@ -3,7 +3,6 @@ import Word from "./Word";
 import CircularProgressBar from "./CircularProgressBar";
 
 function Matches({ commonKeywords, recommendedKeywords, percentage }) {
-  // FIXME: Is there a better value that can be used for the key?
   const commonKeywordsList = commonKeywords.map((word) => (
     <Word key={word} wordContent={word} />
   ));

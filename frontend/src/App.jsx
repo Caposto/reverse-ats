@@ -38,10 +38,10 @@ function App() {
       }
     });
 
-    setShowMatches(true);
     setCommonKeywordsState(commonKeywords);
     setRecommendedKeywordsState(recommendedKeywords);
     setPercentage(Math.floor((commonKeywords.size / resumeKeywords.length) * 100));
+    setShowMatches(true);
   };
 
   // Handles Error: changes every render
@@ -51,25 +51,29 @@ function App() {
   }));
 
   return (
-    <div className="flex">
+    <div>
       <KeywordsContext.Provider value={keywordsContextValue}>
-        <div>
-          <h1 className="text-xl text-center">Job Description</h1>
-          <JobForm className="grow" descriptionType="job" />
-        </div>
-        <div>
-          <h1 className="text-xl text-center">Resume</h1>
-          <JobForm className="grow" descriptionType="resume" />
-        </div>
-        <div>
-          <button
-            type="submit"
-            onClick={compareKeywords}
-            className="text-xl p-2 rounded-md border border-2"
-          >
-            Compare
-          </button>
-        </div>
+        {!showMatches && (
+          <div>
+            <div className="flex">
+              <div>
+                <h1 className="text-xl text-center">Job Description</h1>
+                <JobForm className="grow" descriptionType="job" />
+              </div>
+              <div>
+                <h1 className="text-xl text-center">Resume</h1>
+                <JobForm className="grow" descriptionType="resume" />
+              </div>
+            </div>
+            <button
+              type="submit"
+              onClick={compareKeywords}
+              className="text-xl p-2 rounded-md border border-2"
+            >
+              Compare
+            </button>
+          </div>
+        )}
         {showMatches && (
           <Matches
             commonKeywords={[...commonKeywordsState]}
