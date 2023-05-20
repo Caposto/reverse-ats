@@ -15,3 +15,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* TODO: Remove reeference frame css */
+.popup-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 600px;
+  border: 2px solid black;
+}
+
+.relative {
+  position: relative;
+}

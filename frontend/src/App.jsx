@@ -58,47 +58,52 @@ function App() {
     handleResumeKeywords,
   }));
 
+  // TODO: Remove reference frame: <div className="relative mt-8 ml-8"> & <div className="popup-frame" />
+
   return (
-    <div>
-      <KeywordsContext.Provider value={keywordsContextValue}>
-        {!showMatches && (
-          <div>
-            <div className="flex">
-              <div>
-                <h1 className="text-xl text-center">Job Description</h1>
-                <DynamicForm className="grow" descriptionType="job" />
+    <div className="relative mt-8 ml-8">
+      <div className="popup-frame" />
+      <div>
+        <KeywordsContext.Provider value={keywordsContextValue}>
+          {!showMatches && (
+            <div>
+              <div className="flex">
+                <div>
+                  <h1 className="text-xl text-center">Job Description</h1>
+                  <DynamicForm className="grow" descriptionType="job" />
+                </div>
+                <div>
+                  <h1 className="text-xl text-center">Resume</h1>
+                  <DynamicForm className="grow" descriptionType="resume" />
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl text-center">Resume</h1>
-                <DynamicForm className="grow" descriptionType="resume" />
-              </div>
+              <button
+                type="submit"
+                onClick={compareKeywords}
+                className="text-xl p-2 rounded-md border border-2"
+              >
+                Compare
+              </button>
             </div>
-            <button
-              type="submit"
-              onClick={compareKeywords}
-              className="text-xl p-2 rounded-md border border-2"
-            >
-              Compare
-            </button>
-          </div>
-        )}
-        {showMatches && (
-          <div>
-            <Matches
-              commonKeywords={[...commonKeywordsState]}
-              recommendedKeywords={recommendedKeywordsState}
-              percentage={percentage}
-            />
-            <button
-              type="submit"
-              className="text-xl p-2 rounded-md border border-2"
-              onClick={compareNewDescription}
-            >
-              Submit New Descriptions
-            </button>
-          </div>
-        )}
-      </KeywordsContext.Provider>
+          )}
+          {showMatches && (
+            <div>
+              <Matches
+                commonKeywords={[...commonKeywordsState]}
+                recommendedKeywords={recommendedKeywordsState}
+                percentage={percentage}
+              />
+              <button
+                type="submit"
+                className="text-xl p-2 rounded-md border border-2"
+                onClick={compareNewDescription}
+              >
+                Submit New Descriptions
+              </button>
+            </div>
+          )}
+        </KeywordsContext.Provider>
+      </div>
     </div>
   );
 }
