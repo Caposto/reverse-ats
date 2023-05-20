@@ -67,6 +67,15 @@ function App() {
   return (
     <div className="relative mt-8 ml-8">
       <div className="popup-frame" />
+      <div className="flex justify-center bg-slate-300">
+        <svg width="20" height="20">
+          <rect width="20" height="20" />
+        </svg>
+        <h1 className="text-2xl">Reverse-ATS</h1>
+        <svg width="20" height="20">
+          <rect width="20" height="20" />
+        </svg>
+      </div>
       <div>
         <div className="flex">
           <button type="submit" onClick={switchRoutes}>
@@ -79,15 +88,13 @@ function App() {
         <KeywordsContext.Provider value={keywordsContextValue}>
           {!showMatches && (
             <div>
-              <div className="flex">
-                <div>
-                  <h1 className="text-xl text-center">Job Description</h1>
-                  <DynamicForm className="grow" descriptionType="job" />
-                </div>
-                <div>
-                  <h1 className="text-xl text-center">Resume</h1>
-                  <DynamicForm className="grow" descriptionType="resume" />
-                </div>
+              <div>
+                <h1 className="text-xl text-center">Job Description</h1>
+                <DynamicForm className="grow" descriptionType="job" />
+              </div>
+              <div>
+                <h1 className="text-xl text-center">Resume</h1>
+                <DynamicForm className="grow" descriptionType="resume" />
               </div>
               <button
                 type="submit"
@@ -115,6 +122,7 @@ function App() {
             </div>
           )}
         </KeywordsContext.Provider>
+        <div className="bg-slate-300">Copyright</div>
       </div>
     </div>
   );
