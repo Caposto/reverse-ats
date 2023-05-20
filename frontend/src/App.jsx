@@ -44,12 +44,16 @@ function App() {
     setShowMatches(true);
   };
 
-  // FIXME: How can I presever the resume keyword list
+  // FIXME: How can I preseve the resume keyword list
   const compareNewDescription = () => {
     setCommonKeywordsState(new Set());
     setRecommendedKeywordsState([]);
     setPercentage(0);
     setShowMatches(false);
+  };
+
+  const switchRoutes = () => {
+    setShowMatches(!showMatches);
   };
 
   // Handles Error: changes every render
@@ -64,6 +68,14 @@ function App() {
     <div className="relative mt-8 ml-8">
       <div className="popup-frame" />
       <div>
+        <div className="flex">
+          <button type="submit" onClick={switchRoutes}>
+            Keywords
+          </button>
+          <button type="submit" onClick={switchRoutes}>
+            Results
+          </button>
+        </div>
         <KeywordsContext.Provider value={keywordsContextValue}>
           {!showMatches && (
             <div>
