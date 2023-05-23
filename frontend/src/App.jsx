@@ -65,7 +65,7 @@ function App() {
   // TODO: Remove reference frame: <div className="relative mt-8 ml-8"> & <div className="popup-frame" />
 
   return (
-    <div className="relative mt-8 ml-8">
+    <div className="relative">
       <div className="popup-frame" />
       <div className="flex justify-center bg-slate-300">
         <svg width="20" height="20">
