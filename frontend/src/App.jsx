@@ -62,19 +62,23 @@ function App() {
     handleResumeKeywords,
   }));
 
-  // TODO: Remove reference frame: <div className="relative mt-8 ml-8"> & <div className="popup-frame" />
+  // TODO: Remove reference frame: <div className="relative"> & <div className="popup-frame" />
 
   return (
     <div className="relative">
       <div className="popup-frame" />
-      <div className="flex justify-center bg-slate-300">
-        <svg width="20" height="20">
-          <rect width="20" height="20" />
-        </svg>
+      <div className="flex justify-between h-[60px] items-center border-2">
+        <div className="pl-4">
+          <svg width="20" height="20">
+            <rect width="20" height="20" />
+          </svg>
+        </div>
         <h1 className="text-2xl">Reverse-ATS</h1>
-        <svg width="20" height="20">
-          <rect width="20" height="20" />
-        </svg>
+        <div className="pr-4">
+          <svg width="20" height="20">
+            <rect width="20" height="20" />
+          </svg>
+        </div>
       </div>
       <div>
         <div className="flex">
