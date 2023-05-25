@@ -57,10 +57,13 @@ function App() {
   };
 
   // Handles Error: changes every render
-  const keywordsContextValue = useMemo(() => ({
-    handleJobKeywords,
-    handleResumeKeywords,
-  }));
+  const keywordsContextValue = useMemo(
+    () => ({
+      handleJobKeywords,
+      handleResumeKeywords,
+    }),
+    []
+  );
 
   // TODO: Remove reference frame: <div className="relative"> & <div className="popup-frame" />
 
@@ -80,51 +83,53 @@ function App() {
           </svg>
         </div>
       </div>
-      <div className="flex">
-        <button type="submit" onClick={switchRoutes}>
+      <div className="flex py-2">
+        <button type="submit" className="p-2" onClick={switchRoutes}>
           Keywords
         </button>
-        <button type="submit" onClick={switchRoutes}>
+        <button type="submit" className="p-2" onClick={switchRoutes}>
           Results
         </button>
       </div>
       <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
-          {!showMatches && (
-            <div className="flex flex-col flex-grow">
-              <div>
-                <h1 className="text-xl text-center">Job Description</h1>
-                <DynamicForm className="grow" descriptionType="job" />
-              </div>
-              <div>
-                <h1 className="text-xl text-center">Resume</h1>
-                <DynamicForm className="grow" descriptionType="resume" />
-              </div>
-              <button
-                type="submit"
-                onClick={compareKeywords}
-                className="text-xl p-2 rounded-md border border-2"
-              >
-                Compare
-              </button>
+          <div
+            className="flex flex-col flex-grow"
+            style={{ display: !showMatches ? "flex" : "none" }}
+          >
+            <div>
+              <h1 className="text-xl text-center">Job Description</h1>
+              <DynamicForm className="grow" descriptionType="job" />
             </div>
-          )}
-          {showMatches && (
-            <div className="flex flex-col flex-grow">
-              <Matches
-                commonKeywords={[...commonKeywordsState]}
-                recommendedKeywords={recommendedKeywordsState}
-                percentage={percentage}
-              />
-              <button
-                type="submit"
-                className="text-xl p-2 rounded-md border border-2"
-                onClick={compareNewDescription}
-              >
-                Submit New Descriptions
-              </button>
+            <div>
+              <h1 className="text-xl text-center">Resume</h1>
+              <DynamicForm className="grow" descriptionType="resume" />
             </div>
-          )}
+            <button
+              type="submit"
+              onClick={compareKeywords}
+              className="text-xl p-2 rounded-md border border-2"
+            >
+              Compare
+            </button>
+          </div>
+          <div
+            className="flex flex-col flex-grow"
+            style={{ display: showMatches ? "flex" : "none" }}
+          >
+            <Matches
+              commonKeywords={[...commonKeywordsState]}
+              recommendedKeywords={recommendedKeywordsState}
+              percentage={percentage}
+            />
+            <button
+              type="submit"
+              className="text-xl p-2 rounded-md border border-2"
+              onClick={compareNewDescription}
+            >
+              Submit New Descriptions
+            </button>
+          </div>
         </KeywordsContext.Provider>
       </div>
       <footer className="mt-auto h-16 bg-slate-300">Copyright</footer>
