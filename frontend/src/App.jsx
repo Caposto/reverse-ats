@@ -65,9 +65,9 @@ function App() {
   // TODO: Remove reference frame: <div className="relative"> & <div className="popup-frame" />
 
   return (
-    <div className="relative">
+    <div className="flex flex-col min-h-screen">
       <div className="popup-frame" />
-      <div className="flex justify-between h-[60px] items-center border-2">
+      <div className="flex justify-between h-16 border-2 items-center">
         <div className="pl-4">
           <svg width="20" height="20">
             <rect width="20" height="20" />
@@ -80,18 +80,18 @@ function App() {
           </svg>
         </div>
       </div>
-      <div>
-        <div className="flex">
-          <button type="submit" onClick={switchRoutes}>
-            Keywords
-          </button>
-          <button type="submit" onClick={switchRoutes}>
-            Results
-          </button>
-        </div>
+      <div className="flex">
+        <button type="submit" onClick={switchRoutes}>
+          Keywords
+        </button>
+        <button type="submit" onClick={switchRoutes}>
+          Results
+        </button>
+      </div>
+      <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
           {!showMatches && (
-            <div>
+            <div className="flex flex-col flex-grow">
               <div>
                 <h1 className="text-xl text-center">Job Description</h1>
                 <DynamicForm className="grow" descriptionType="job" />
@@ -110,7 +110,7 @@ function App() {
             </div>
           )}
           {showMatches && (
-            <div>
+            <div className="flex flex-col flex-grow">
               <Matches
                 commonKeywords={[...commonKeywordsState]}
                 recommendedKeywords={recommendedKeywordsState}
@@ -126,8 +126,8 @@ function App() {
             </div>
           )}
         </KeywordsContext.Provider>
-        <div className="bg-slate-300">Copyright</div>
       </div>
+      <footer className="mt-auto h-16 bg-slate-300">Copyright</footer>
     </div>
   );
 }
