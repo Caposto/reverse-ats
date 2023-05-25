@@ -66,20 +66,10 @@ function App() {
     []
   );
 
-  // TODO: Remove reference frame: <div className="relative"> & <div className="popup-frame" />
-
   return (
     <div className="flex flex-col min-h-screen">
       <div className="popup-frame" />
-      <Header />
-      <div className="flex py-2">
-        <button type="submit" className="p-2" onClick={switchRoutes}>
-          Keywords
-        </button>
-        <button type="submit" className="p-2" onClick={switchRoutes}>
-          Results
-        </button>
-      </div>
+      <Header viewController={switchRoutes} />
       <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
           <div
@@ -87,11 +77,11 @@ function App() {
             style={{ display: !showMatches ? "flex" : "none" }}
           >
             <div>
-              <h1 className="text-xl text-center">Job Description</h1>
+              <h1 className="text-xl pl-4">Job Description</h1>
               <DynamicForm className="grow" descriptionType="job" />
             </div>
             <div>
-              <h1 className="text-xl text-center">Resume</h1>
+              <h1 className="text-xl pl-4">Resume</h1>
               <DynamicForm className="grow" descriptionType="resume" />
             </div>
             <button
