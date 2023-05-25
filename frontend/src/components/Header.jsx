@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function Header({ viewController }) {
+function Header({ matchesRoute, keywordsRoutes }) {
   return (
     <div className="pb-2">
       <div className="flex justify-between h-16 border-2 items-center">
@@ -17,10 +17,10 @@ function Header({ viewController }) {
         </div>
       </div>
       <div className="flex py-2">
-        <button type="submit" className="px-2" onClick={viewController}>
+        <button type="submit" className="px-2" onClick={keywordsRoutes}>
           Keywords
         </button>
-        <button type="submit" className="px-2" onClick={viewController}>
+        <button type="submit" className="px-2" onClick={matchesRoute}>
           Results
         </button>
       </div>
@@ -30,7 +30,8 @@ function Header({ viewController }) {
 }
 
 Header.propTypes = {
-  viewController: PropTypes.func.isRequired,
+  matchesRoute: PropTypes.func.isRequired,
+  keywordsRoutes: PropTypes.func.isRequired,
 };
 
 export default Header;

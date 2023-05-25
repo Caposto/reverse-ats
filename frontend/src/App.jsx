@@ -53,10 +53,6 @@ function App() {
     setShowMatches(false);
   };
 
-  const switchRoutes = () => {
-    setShowMatches(!showMatches);
-  };
-
   // Handles Error: changes every render
   const keywordsContextValue = useMemo(
     () => ({
@@ -69,7 +65,10 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="popup-frame" />
-      <Header viewController={switchRoutes} />
+      <Header
+        matchesRoute={() => setShowMatches(true)}
+        keywordsRoutes={() => setShowMatches(false)}
+      />
       <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
           <div
