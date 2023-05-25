@@ -83,13 +83,15 @@ function App() {
               <h1 className="text-xl pl-4">Resume</h1>
               <DynamicForm className="grow" descriptionType="resume" />
             </div>
-            <button
-              type="submit"
-              onClick={compareKeywords}
-              className="text-xl p-2 rounded-md border border-2"
-            >
-              Compare
-            </button>
+            <div className="text-center">
+              <button
+                type="submit"
+                onClick={compareKeywords}
+                className="text-sm px-4 py-2 border rounded-full"
+              >
+                Compare
+              </button>
+            </div>
           </div>
           <div
             className="flex flex-col flex-grow"
