@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import Header from "./components/Header";
 import DynamicForm from "./components/DynamicForm";
 import Matches from "./components/Matches";
 import KeywordsContext from "./services/KeywordContext";
@@ -70,19 +71,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="popup-frame" />
-      <div className="flex justify-between h-16 border-2 items-center">
-        <div className="pl-4">
-          <svg width="20" height="20">
-            <rect width="20" height="20" />
-          </svg>
-        </div>
-        <h1 className="text-2xl">Reverse-ATS</h1>
-        <div className="pr-4">
-          <svg width="20" height="20">
-            <rect width="20" height="20" />
-          </svg>
-        </div>
-      </div>
+      <Header />
       <div className="flex py-2">
         <button type="submit" className="p-2" onClick={switchRoutes}>
           Keywords
