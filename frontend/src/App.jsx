@@ -84,11 +84,7 @@ function App() {
               <DynamicForm className="grow" descriptionType="resume" />
             </div>
             <div className="text-center">
-              <button
-                type="submit"
-                onClick={compareKeywords}
-                className="text-sm px-4 py-2 border rounded-full"
-              >
+              <button type="submit" onClick={compareKeywords} className="button-sm">
                 Compare
               </button>
             </div>
@@ -103,11 +99,7 @@ function App() {
               percentage={percentage}
             />
             <div className="text-center">
-              <button
-                type="submit"
-                className="text-sm px-4 py-2 border rounded-full"
-                onClick={compareNewDescription}
-              >
+              <button type="submit" className="button-sm" onClick={compareNewDescription}>
                 Submit New Descriptions
               </button>
             </div>
