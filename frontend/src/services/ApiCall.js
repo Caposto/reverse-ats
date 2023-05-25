@@ -7,7 +7,13 @@ async function getKeywordsFromFlask(description) {
     body: JSON.stringify({ description }),
   });
 
-  const data = await response.json();
+  const responseIsSuccessful = response.ok;
+  let data;
+
+  if (responseIsSuccessful) {
+    data = await response.json();
+  }
+
   return data;
 }
 

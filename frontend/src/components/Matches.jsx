@@ -12,7 +12,7 @@ function Matches({ commonKeywords, recommendedKeywords, percentage }) {
   ));
 
   return (
-    <div>
+    <div className="text-center">
       <CircularProgressBar percentage={percentage} />
       <table className="table-auto">
         <thead>

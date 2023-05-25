@@ -102,13 +102,15 @@ function App() {
               recommendedKeywords={recommendedKeywordsState}
               percentage={percentage}
             />
-            <button
-              type="submit"
-              className="text-xl p-2 rounded-md border border-2"
-              onClick={compareNewDescription}
-            >
-              Submit New Descriptions
-            </button>
+            <div className="text-center">
+              <button
+                type="submit"
+                className="text-sm px-4 py-2 border rounded-full"
+                onClick={compareNewDescription}
+              >
+                Submit New Descriptions
+              </button>
+            </div>
           </div>
         </KeywordsContext.Provider>
       </div>

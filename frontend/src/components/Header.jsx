@@ -9,7 +9,7 @@ function Header({ matchesRoute, keywordsRoutes }) {
             <rect width="20" height="20" />
           </svg>
         </div>
-        <h1 className="text-2xl">Reverse-ATS</h1>
+        <h1 className="font-extrabold">Reverse-ATS</h1>
         <div className="pr-4">
           <svg width="20" height="20">
             <rect width="20" height="20" />
