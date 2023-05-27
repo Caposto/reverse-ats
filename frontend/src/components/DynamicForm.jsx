@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import KeywordList from "./KeywordList";
 import Error from "./Error";
+import Loader from "../Loader";
 import getKeywordsFromFlask from "../services/ApiCall";
 import KeywordsContext from "../services/KeywordContext";
 
@@ -91,7 +92,7 @@ function DynamicForm({ descriptionType }) {
             <div className="pt-2">
               Character Limit: {count}/{maxJobDescriptionLength}
             </div>
-            <div className="text-xl pl-2"> {loading ? <>...</> : ""} </div>
+            <div className="text-xl pl-2"> {loading ? <Loader /> : ""} </div>
           </div>
         </form>
       )}
