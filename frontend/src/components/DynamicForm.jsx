@@ -84,11 +84,7 @@ function DynamicForm({ descriptionType }) {
           />
           <div className="flex">
             <div className="p-4">
-              <button
-                className="text-xl p-2 rounded-md border border-2"
-                type="submit"
-                aria-label="Submit Button"
-              >
+              <button className="button-sm" type="submit" aria-label="Submit Button">
                 Extract
               </button>
             </div>
@@ -102,11 +98,7 @@ function DynamicForm({ descriptionType }) {
       {!visible && !error && !exception && (
         <div>
           <KeywordList initial={keywords} descriptionType={descriptionType} />
-          <button
-            className="text-xl p-2 rounded-md border border-2"
-            type="submit"
-            onClick={submitNewDescription}
-          >
+          <button className="button-lg" type="submit" onClick={submitNewDescription}>
             Submit New Description
           </button>
         </div>

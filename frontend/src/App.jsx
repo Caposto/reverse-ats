@@ -72,7 +72,7 @@ function App() {
       <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
           <div
-            className="flex flex-col flex-grow"
+            className="flex flex-col flex-grow pt-4"
             style={{ display: !showMatches ? "flex" : "none" }}
           >
             <div>
@@ -84,7 +84,7 @@ function App() {
               <DynamicForm className="grow" descriptionType="resume" />
             </div>
             <div className="text-center">
-              <button type="submit" onClick={compareKeywords} className="button-sm">
+              <button type="submit" onClick={compareKeywords} className="button-lg">
                 Compare
               </button>
             </div>
@@ -99,7 +99,7 @@ function App() {
               percentage={percentage}
             />
             <div className="text-center">
-              <button type="submit" className="button-sm" onClick={compareNewDescription}>
+              <button type="submit" className="button-lg" onClick={compareNewDescription}>
                 Submit New Descriptions
               </button>
             </div>
