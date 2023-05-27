@@ -71,10 +71,7 @@ function App() {
       />
       <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
-          <div
-            className="flex flex-col flex-grow pt-4"
-            style={{ display: !showMatches ? "flex" : "none" }}
-          >
+          <div className={!showMatches ? "flex flex-col flex-grow pt-4" : "hidden"}>
             <div>
               <h1 className="text-xl pl-4">Job Description</h1>
               <DynamicForm className="grow" descriptionType="job" />
@@ -89,10 +86,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div
-            className="flex flex-col flex-grow"
-            style={{ display: showMatches ? "flex" : "none" }}
-          >
+          <div className={showMatches ? "flex flex-col flex-grow" : "hidden"}>
             <Matches
               commonKeywords={[...commonKeywordsState]}
               recommendedKeywords={recommendedKeywordsState}

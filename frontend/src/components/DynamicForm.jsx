@@ -82,7 +82,7 @@ function DynamicForm({ descriptionType }) {
             maxLength={maxJobDescriptionLength}
             className="block px-4 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
           />
-          <div className="flex">
+          <div className="flex items-center">
             <div className="p-4">
               <button className="button-sm" type="submit" aria-label="Submit Button">
                 Extract
@@ -91,14 +91,14 @@ function DynamicForm({ descriptionType }) {
             <div className="pt-2">
               Character Limit: {count}/{maxJobDescriptionLength}
             </div>
+            <div className="text-xl pl-2"> {loading ? <>...</> : ""} </div>
           </div>
         </form>
       )}
-      <div className="text-xl"> {loading ? <>Loading...</> : ""} </div>
       {!visible && !error && !exception && (
         <div>
           <KeywordList initial={keywords} descriptionType={descriptionType} />
-          <button className="button-lg" type="submit" onClick={submitNewDescription}>
+          <button className="button-sm" type="submit" onClick={submitNewDescription}>
             Submit New Description
           </button>
         </div>
