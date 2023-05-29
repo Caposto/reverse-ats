@@ -59,7 +59,7 @@ function KeywordForm({ edit, onSubmit }) {
             onClick={handleSubmit}
             className="p-6 border-solid border-4 cursor-pointer bg-purple-300"
           >
-            Add keyword
+            Add
           </button>
         </>
       )}

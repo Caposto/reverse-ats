@@ -2,10 +2,11 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import KeywordList from "./KeywordList";
 import Error from "./Error";
+import Loader from "../Loader";
 import getKeywordsFromFlask from "../services/ApiCall";
 import KeywordsContext from "../services/KeywordContext";
 
-function JobForm({ descriptionType }) {
+function DynamicForm({ descriptionType }) {
   const [description, setDescription] = useState("");
   const [visible, setVisibility] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,6 @@ function JobForm({ descriptionType }) {
     setKeywords([]);
     setVisibility(true);
     setSubmitted(false);
-    // updateParentKeywords([]);
   };
 
   return (
@@ -83,29 +83,23 @@ function JobForm({ descriptionType }) {
             maxLength={maxJobDescriptionLength}
             className="block px-4 w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"
           />
-          <div className="pt-2">
-            Character Limit: {count}/{maxJobDescriptionLength}
-          </div>
-          <div className="py-4">
-            <button
-              className="text-xl p-2 rounded-md border border-2"
-              type="submit"
-              aria-label="Submit Button"
-            >
-              Extract
-            </button>
+          <div className="flex items-center">
+            <div className="p-4">
+              <button className="button-sm" type="submit" aria-label="Submit Button">
+                Extract
+              </button>
+            </div>
+            <div className="pt-2">
+              Character Limit: {count}/{maxJobDescriptionLength}
+            </div>
+            <div className="text-xl pl-2"> {loading ? <Loader /> : ""} </div>
           </div>
         </form>
       )}
-      <div className="text-xl"> {loading ? <>Loading...</> : ""} </div>
       {!visible && !error && !exception && (
         <div>
           <KeywordList initial={keywords} descriptionType={descriptionType} />
-          <button
-            className="text-xl p-2 rounded-md border border-2"
-            type="submit"
-            onClick={submitNewDescription} // FIXME: Is there a way to reload just the component instead of whole page?
-          >
+          <button className="button-sm" type="submit" onClick={submitNewDescription}>
             Submit New Description
           </button>
         </div>
@@ -118,8 +112,8 @@ function JobForm({ descriptionType }) {
   );
 }
 
-JobForm.propTypes = {
+DynamicForm.propTypes = {
   descriptionType: PropTypes.string.isRequired,
 };
 
-export default JobForm;
+export default DynamicForm;
