@@ -25,23 +25,25 @@ function App() {
   };
 
   const compareKeywords = () => {
+    // Add all resume keywords to a hash set for O(1) lookup
     const resumeKeywordsSet = new Set(resumeKeywords.map((keyword) => keyword.text));
 
+    // Compare each keyword from job description to see the number of matches
     Object.values(jobKeywords).forEach((jobKeyword) => {
       if (resumeKeywordsSet.has(jobKeyword.text)) {
         commonKeywords.add(jobKeyword.text);
       }
     });
 
-    Object.values(resumeKeywords).forEach((resumeKeyword) => {
-      if (!commonKeywords.has(resumeKeyword.text)) {
-        recommendedKeywords.push(resumeKeyword.text);
+    Object.values(jobKeywords).forEach((jobKeyword) => {
+      if (!commonKeywords.has(jobKeyword.text)) {
+        recommendedKeywords.push(jobKeyword.text);
       }
     });
 
     setCommonKeywordsState(commonKeywords);
     setRecommendedKeywordsState(recommendedKeywords);
-    setPercentage(Math.floor((commonKeywords.size / resumeKeywords.length) * 100));
+    setPercentage(Math.floor((commonKeywords.size / jobKeywords.length) * 100));
     setShowMatches(true);
   };
 
