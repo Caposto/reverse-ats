@@ -95,7 +95,11 @@ function App() {
               percentage={percentage}
             />
             <div className="text-center">
-              <button type="submit" className="button-lg" onClick={compareNewDescription}>
+              <button
+                type="submit"
+                className="button-lg pt-2"
+                onClick={compareNewDescription}
+              >
                 Submit New Descriptions
               </button>
             </div>
