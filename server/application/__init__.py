@@ -15,9 +15,6 @@ def init_app():
   app.config['CORS_HEADERS'] = 'Content-Type'
 
   with app.app_context():
-    # Include routes
-    from . import routes
-
     # Register Blueprints
     from .api import main
     app.register_blueprint(main) # Register API
