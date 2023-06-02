@@ -13,7 +13,7 @@ class Config(object):
     TEMPLATES_FOLDER = 'templates'
 
 class ProductionConfig(Config):
-    pass
+    FLASK_DEBUG=0
 
 class DevelopmentConfig(Config):
     DEBUG = True
