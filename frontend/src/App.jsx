@@ -66,7 +66,6 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="popup-frame" />
       <Header
         matchesRoute={() => setShowMatches(true)}
         keywordsRoutes={() => setShowMatches(false)}
