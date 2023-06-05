@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Header from "./components/Header";
 import DynamicForm from "./components/DynamicForm";
 import Matches from "./components/Matches";
@@ -11,6 +11,34 @@ function App() {
   const [recommendedKeywordsState, setRecommendedKeywordsState] = useState([]);
   const [showMatches, setShowMatches] = useState(false);
   const [percentage, setPercentage] = useState(0);
+
+  // Initialize keywords from chrome storage
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    chrome.storage.local.get(["chromeJobKeywords", "chromeResumeKeywords"], (result) => {
+      if (result.chromeJobKeywords) {
+        setJobKeywords(result.chromeJobKeywords);
+      }
+      if (result.chromeResumeKeywords) {
+        setResumeKeywords(result.chromeResumeKeywords);
+      }
+    });
+  }, []); // Empty dependency array means this runs once on component mount
+
+  // Store Keywords in Chrome Storage
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    chrome.storage.local.set({ chromeJobKeywords: jobKeywords }, () => {
+      console.log("Job Keywords Saved");
+    });
+  }, [jobKeywords]);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    chrome.storage.local.set({ chromeResumeKeywords: resumeKeywords }, () => {
+      console.log("Resume Keywords Saved");
+    });
+  }, [resumeKeywords]);
 
   // Used For Comparison
   const commonKeywords = new Set();
