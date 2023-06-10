@@ -24,14 +24,3 @@ code {
     @apply text-sm px-4 py-2 border rounded-full;
   }
 }
-
-/* TODO: Remove reeference frame css */
-.popup-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 800px;
-  border: 2px solid black;
-  pointer-events: none;
-}

@@ -16,14 +16,6 @@ function App() {
   const commonKeywords = new Set();
   const recommendedKeywords = [];
 
-  const handleJobKeywords = (keywords) => {
-    setJobKeywords(keywords);
-  };
-
-  const handleResumeKeywords = (keywords) => {
-    setResumeKeywords(keywords);
-  };
-
   const compareKeywords = () => {
     // Add all resume keywords to a hash set for O(1) lookup
     const resumeKeywordsSet = new Set(resumeKeywords.map((keyword) => keyword.text));
@@ -35,6 +27,7 @@ function App() {
       }
     });
 
+    // Generate a list of recommended keywords from all non-matches on the job description
     Object.values(jobKeywords).forEach((jobKeyword) => {
       if (!commonKeywords.has(jobKeyword.text)) {
         recommendedKeywords.push(jobKeyword.text);
@@ -47,7 +40,6 @@ function App() {
     setShowMatches(true);
   };
 
-  // FIXME: How can I preseve the resume keyword list
   const compareNewDescription = () => {
     setCommonKeywordsState(new Set());
     setRecommendedKeywordsState([]);
@@ -55,18 +47,17 @@ function App() {
     setShowMatches(false);
   };
 
-  // Handles Error: changes every render
+  // Ensures context is not recreated on every render to optimize performance
   const keywordsContextValue = useMemo(
     () => ({
-      handleJobKeywords,
-      handleResumeKeywords,
+      handleJobKeywords: (keywords) => setJobKeywords(keywords),
+      handleResumeKeywords: (keywords) => setResumeKeywords(keywords),
     }),
     []
   );
 
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="popup-frame" />
       <Header
         matchesRoute={() => setShowMatches(true)}
         keywordsRoutes={() => setShowMatches(false)}
