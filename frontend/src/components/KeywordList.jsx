@@ -11,33 +11,14 @@ function KeywordList({ initial, descriptionType }) {
 
   // Intialize the keyword list with the result of the API Call
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    chrome.storage.local.get(["chromeJobKeywords", "chromeResumeKeywords"], (result) => {
-      if (result.chromeJobKeywords) {
-        console.log(result.chromeJobKeywords);
-      }
-      if (initial) {
-        setKeywords(
-          initial.map((keyword, index) => ({
-            id: index + 1,
-            text: keyword,
-            isComplete: false,
-          }))
-        );
-      }
-    });
+    setKeywords(
+      initial.map((keyword, index) => ({
+        id: index + 1,
+        text: keyword,
+        isComplete: false,
+      }))
+    );
   }, []);
-
-  // Store Keywords in Chrome Storage
-  useEffect(() => {
-    if (descriptionType === "job") {
-      // eslint-disable-next-line no-undef
-      chrome.storage.local.set({ chromeJobKeywords: keywords }, () => {});
-    } else if (descriptionType === "resume") {
-      // eslint-disable-next-line no-undef
-      chrome.storage.local.set({ chromeResumeKeywords: keywords }, () => {});
-    }
-  }, [keywords]);
 
   // Update Parent Keywords
   useEffect(() => {
