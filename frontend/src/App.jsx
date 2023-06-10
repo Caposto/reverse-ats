@@ -12,14 +12,6 @@ function App() {
   const [showMatches, setShowMatches] = useState(false);
   const [percentage, setPercentage] = useState(0);
 
-  const handleJobKeywords = (keywords) => {
-    setJobKeywords(keywords);
-  };
-
-  const handleResumeKeywords = (keywords) => {
-    setResumeKeywords(keywords);
-  };
-
   // Used For Comparison
   const commonKeywords = new Set();
   const recommendedKeywords = [];
@@ -54,11 +46,11 @@ function App() {
     setShowMatches(false);
   };
 
-  // Handles Error: changes every render
+  // Ensures context is not recreated on every render to optimize performance
   const keywordsContextValue = useMemo(
     () => ({
-      handleJobKeywords,
-      handleResumeKeywords,
+      handleJobKeywords: (keywords) => setJobKeywords(keywords),
+      handleResumeKeywords: (keywords) => setResumeKeywords(keywords),
     }),
     []
   );
