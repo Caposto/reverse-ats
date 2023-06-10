@@ -27,6 +27,7 @@ function App() {
       }
     });
 
+    // Generate a list of recommended keywords from all non-matches on the job description
     Object.values(jobKeywords).forEach((jobKeyword) => {
       if (!commonKeywords.has(jobKeyword.text)) {
         recommendedKeywords.push(jobKeyword.text);
