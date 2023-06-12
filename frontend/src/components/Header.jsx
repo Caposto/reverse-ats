@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function Header({ matchesRoute, keywordsRoutes, closeWindow }) {
+  const [showInstructions, setShowInstructions] = useState(false);
+
   const displayInstructions = () => {
-    const instructionWindow = window.open("", "Instructions", "width=500,height=500");
-    instructionWindow.document.write(`
-      <h1>Instructions</h1>
-      <p>Here are the instructions...</p>
-    `);
+    setShowInstructions(!showInstructions);
   };
 
   return (
@@ -32,6 +31,12 @@ function Header({ matchesRoute, keywordsRoutes, closeWindow }) {
           Results
         </button>
       </div>
+      {showInstructions && (
+        <div className="p-2 bg-gray-200 rounded-md">
+          <h2>Instructions:</h2>
+          <p>Here are the instructions...</p>
+        </div>
+      )}
       <div className="border-2" />
     </div>
   );
