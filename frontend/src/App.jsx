@@ -18,18 +18,22 @@ function App() {
 
   const compareKeywords = () => {
     // Add all resume keywords to a hash set for O(1) lookup
-    const resumeKeywordsSet = new Set(resumeKeywords.map((keyword) => keyword.text));
+    const resumeKeywordsSet = new Set(
+      resumeKeywords.map((keyword) => keyword.text.trim().toLowerCase())
+    );
 
     // Compare each keyword from job description to see the number of matches
     Object.values(jobKeywords).forEach((jobKeyword) => {
-      if (resumeKeywordsSet.has(jobKeyword.text)) {
-        commonKeywords.add(jobKeyword.text);
+      const jobKeywordText = jobKeyword.text.trim().toLowerCase();
+      if (resumeKeywordsSet.has(jobKeywordText)) {
+        commonKeywords.add(jobKeywordText);
       }
     });
 
     // Generate a list of recommended keywords from all non-matches on the job description
     Object.values(jobKeywords).forEach((jobKeyword) => {
-      if (!commonKeywords.has(jobKeyword.text)) {
+      const jobKeywordText = jobKeyword.text.trim().toLowerCase();
+      if (!commonKeywords.has(jobKeywordText)) {
         recommendedKeywords.push(jobKeyword.text);
       }
     });
@@ -85,19 +89,15 @@ function App() {
               recommendedKeywords={recommendedKeywordsState}
               percentage={percentage}
             />
-            <div className="text-center">
-              <button
-                type="submit"
-                className="button-lg pt-2"
-                onClick={compareNewDescription}
-              >
+            <div className="text-center pt-4">
+              <button type="submit" className="button-lg" onClick={compareNewDescription}>
                 Submit New Descriptions
               </button>
             </div>
           </div>
         </KeywordsContext.Provider>
       </div>
-      <footer className="mt-auto h-16 bg-slate-300">Copyright</footer>
+      <footer className="mt-auto h-16 bg-slate-300" />
     </div>
   );
 }
