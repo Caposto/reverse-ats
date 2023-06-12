@@ -65,6 +65,7 @@ function App() {
       <Header
         matchesRoute={() => setShowMatches(true)}
         keywordsRoutes={() => setShowMatches(false)}
+        closeWindow={() => window.close()}
       />
       <div className="flex-grow">
         <KeywordsContext.Provider value={keywordsContextValue}>
