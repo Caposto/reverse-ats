@@ -71,12 +71,12 @@ function App() {
         <KeywordsContext.Provider value={keywordsContextValue}>
           <div className={!showMatches ? "flex flex-col flex-grow pt-4" : "hidden"}>
             <div>
-              <h1 className="text-xl text-center">Job Description</h1>
-              <DynamicForm className="grow" descriptionType="job" />
-            </div>
-            <div>
               <h1 className="text-xl text-center pt-4">Resume</h1>
               <DynamicForm className="grow" descriptionType="resume" />
+            </div>
+            <div>
+              <h1 className="text-xl text-center">Job Description</h1>
+              <DynamicForm className="grow" descriptionType="job" />
             </div>
             <div className="text-center">
               <button type="submit" onClick={compareKeywords} className="button-lg">
