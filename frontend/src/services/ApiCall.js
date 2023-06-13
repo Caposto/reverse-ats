@@ -1,5 +1,5 @@
 async function getKeywordsFromFlask(description) {
-  const response = await fetch("http://127.0.0.1:5000/extract_keywords", {
+  const response = await fetch("https://reverse-ats-api.onrender.com/extract_keywords", {
     method: "POST", // Using POST since GET doesn't accept strings greater than 2000 characters
     headers: {
       "Content-Type": "application/json",

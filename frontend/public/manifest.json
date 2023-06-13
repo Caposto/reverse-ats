@@ -7,6 +7,6 @@
     "default_popup": "index.html",
     "default_title": "Open popup"
   },
-  "host_permissions": ["http://localhost/*"],
+  "host_permissions": ["https://reverse-ats-api.onrender.com/*"],
   "permissions": ["storage"]
 }
