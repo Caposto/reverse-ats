@@ -1,11 +1,7 @@
 import PropTypes from "prop-types";
 
 function Error({ errorMessage }) {
-  return (
-    <div>
-      <p>{errorMessage}</p>
-    </div>
-  );
+  return <div className="border-2 text-red-600">{errorMessage}</div>;
 }
 
 Error.propTypes = {
@@ -13,7 +9,7 @@ Error.propTypes = {
 };
 
 Error.defaultProps = {
-  errorMessage: "Oops, something went wrong. Please Try again later.",
+  errorMessage: "Sorry! The service is temporarily down. Please try again later.",
 };
 
 export default Error;

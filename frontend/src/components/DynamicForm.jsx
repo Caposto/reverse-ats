@@ -68,7 +68,7 @@ function DynamicForm({ descriptionType }) {
   };
 
   return (
-    <div aria-label="form-test-id" className="px-8">
+    <div aria-label="form-test-id" className="px-12">
       {!submitted && (
         <form onSubmit={handleSubmit}>
           <textarea
@@ -89,7 +89,7 @@ function DynamicForm({ descriptionType }) {
                 Extract
               </button>
             </div>
-            <div className="pt-2">
+            <div>
               Character Limit: {count}/{maxJobDescriptionLength}
             </div>
             <div className="text-xl pl-2"> {loading ? <Loader /> : ""} </div>
@@ -99,9 +99,11 @@ function DynamicForm({ descriptionType }) {
       {!visible && !error && !exception && (
         <div>
           <KeywordList initial={keywords} descriptionType={descriptionType} />
-          <button className="button-sm" type="submit" onClick={submitNewDescription}>
-            Submit New Description
-          </button>
+          <div className="text-center py-2">
+            <button className="button-sm" type="submit" onClick={submitNewDescription}>
+              Submit New Description
+            </button>
+          </div>
         </div>
       )}
       {error && <Error />}

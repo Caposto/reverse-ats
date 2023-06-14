@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 function Word({ wordContent }) {
-  return <div className="flex items-center mb-6">{wordContent}</div>;
+  return <div className="mb-1 border-2">{wordContent}</div>;
 }
 
 Word.propTypes = {

@@ -18,9 +18,9 @@ code {
 
 @layer components {
   .button-lg {
-    @apply text-xl px-4 py-2 border rounded-full;
+    @apply text-xl font-bold px-4 py-2 border-4 rounded-full;
   }
   .button-sm {
-    @apply text-sm px-4 py-2 border rounded-full;
+    @apply text-sm font-bold px-2 border-4 rounded-full;
   }
 }

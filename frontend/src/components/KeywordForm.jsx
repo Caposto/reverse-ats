@@ -8,7 +8,7 @@ function KeywordForm({ edit, onSubmit }) {
 
   useEffect(() => {
     inputRef.current.focus();
-  });
+  }, []);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -25,45 +25,45 @@ function KeywordForm({ edit, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <div>
       {edit ? (
-        <>
+        <form onSubmit={handleSubmit} className="mb-4">
           <input
             placeholder="Update your item"
             value={input}
             onChange={handleChange}
             name="text"
             ref={inputRef}
-            className="p-6 border-solid border-4"
+            className="p-4 border-solid border-4"
           />
           <button
             type="submit"
             onClick={handleSubmit}
-            className="p-6 border-solid border-4 cursor-pointer bg-purple-100"
+            className="p-4 border-solid border-4 cursor-pointer bg-purple-300"
           >
             Update
           </button>
-        </>
+        </form>
       ) : (
-        <>
+        <form onSubmit={handleSubmit} className="mb-4">
           <input
             placeholder="Add a keyword"
             value={input}
             onChange={handleChange}
             name="text"
-            className="p-6 border-solid border-4"
+            className="p-4 border-solid border-4"
             ref={inputRef}
           />
           <button
             type="submit"
             onClick={handleSubmit}
-            className="p-6 border-solid border-4 cursor-pointer bg-purple-300"
+            className="p-4 border-solid border-4 cursor-pointer bg-purple-300"
           >
             Add
           </button>
-        </>
+        </form>
       )}
-    </form>
+    </div>
   );
 }
 

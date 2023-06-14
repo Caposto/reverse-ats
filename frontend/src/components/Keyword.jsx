@@ -23,7 +23,7 @@ function Keyword({ keywords, removeKeyword, updateKeyword }) {
   }
 
   return keywords.map((keyword) => (
-    <div className="flex justify-between items-center m-2 p-4" key={keyword.id}>
+    <div className="flex justify-between items-center m-2 p-2" key={keyword.id}>
       {keyword.text}
       <div className="flex justify-center cursor-pointer text-2xl">
         <RiCloseCircleLine onClick={() => removeKeyword(keyword.id)} />
