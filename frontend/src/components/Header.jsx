@@ -15,9 +15,9 @@ function Header({ matchesRoute, keywordsRoutes, closeWindow }) {
         <button
           type="submit"
           onClick={displayInstructions}
-          className="px-2 text-xl font-bold italic border-2 rounded"
+          className="px-2 text-xl font-bold italic border-4 rounded"
         >
-          I
+          i
         </button>
         <h1 className="font-extrabold">Reverse-ATS</h1>
         <button type="submit" onClick={closeWindow} className="px-2 text-xl">
