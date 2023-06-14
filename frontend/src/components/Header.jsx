@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import Instructions from "./Instructions";
 
 function Header({ matchesRoute, keywordsRoutes, closeWindow }) {
   const [showInstructions, setShowInstructions] = useState(false);
@@ -31,12 +32,7 @@ function Header({ matchesRoute, keywordsRoutes, closeWindow }) {
           Results
         </button>
       </div>
-      {showInstructions && (
-        <div className="p-2 bg-gray-200 rounded-md">
-          <h2>Instructions:</h2>
-          <p>Here are the instructions...</p>
-        </div>
-      )}
+      {showInstructions && <Instructions />}
       <div className="border-2" />
     </div>
   );
