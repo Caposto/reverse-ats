@@ -11,7 +11,7 @@ function Header({ matchesRoute, keywordsRoutes, closeWindow }) {
 
   return (
     <div className="pb-2">
-      <div className="h-16 border-2 text-center items-center flex justify-between">
+      <div className="h-16 border-2 px-2 text-center items-center flex justify-between">
         <button
           type="submit"
           onClick={displayInstructions}
